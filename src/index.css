@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.card {
+  width: 400px;
+  min-height: 350px;
+  border-radius: 7px;
+  padding:25px 10px 25px 10px;
+  box-shadow: 0 5px 15px 0 rgba(46, 61, 73, 0.22);
+}
+
+.card>img {
+  width: 100%;
+  max-width: 350px;
+  height: 200px;
+}
+
+.card>span {
+  font-size: 18px;
+}
+
+
