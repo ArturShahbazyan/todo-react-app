@@ -12,22 +12,50 @@ code {
     monospace;
 }
 
-.card {
-  width: 400px;
-  min-height: 350px;
-  border-radius: 7px;
-  padding:25px 10px 25px 10px;
-  box-shadow: 0 5px 15px 0 rgba(46, 61, 73, 0.22);
+.increment_btn {
+  background-color: #9b59b6;
+  box-shadow: 0px 5px 0px 0px #82409D;
 }
 
-.card>img {
-  width: 100%;
-  max-width: 350px;
-  height: 200px;
+.decrement_btn {
+  background-color: #5991b6;
+  box-shadow: 0px 5px 0px 0px #407c9d;
 }
 
-.card>span {
-  font-size: 18px;
+.btn {
+  border-radius: 5px;
+  padding: 15px 25px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 15px;
+  color: #fff;
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
 }
+
+.btn:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  box-shadow: 0px 1px 0px 0px;
+}
+
+.btn:focus {
+  border:none;
+}
+
+.counter_area {
+  padding:10px;
+  background-color: #00000017;
+  border-radius: 3px;
+  margin: 15px;
+  font-size:22px;
+}
+
+
+
+
 
 
