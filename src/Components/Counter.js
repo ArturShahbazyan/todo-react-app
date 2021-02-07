@@ -9,24 +9,25 @@ class Counter extends Component {
             count:0
         }
 
+
+         handlePlusCount = () => {
+            this.setState({
+                count: this.state.count+1
+            })
+        }
+
+         handleMinusCount = () => {
+            this.setState({
+                count: this.state.count-1
+            })
+        }
+
     render() {
-
-        const handlePlusCount = () => {
-            this.setState({
-                count: this.state.count+=1
-            })
-        }
-
-        const handleMinusCount = () => {
-            this.setState({
-                count: this.state.count-=1
-            })
-        }
 
         return (
             <div>
             <Result count={this.state.count}/>
-            <Actions handlePlusCount={handlePlusCount} handleMinusCount={handleMinusCount}/>
+            <Actions handlePlusCount={this.handlePlusCount} handleMinusCount={this.handleMinusCount}/>
             </div>
         )
     }
