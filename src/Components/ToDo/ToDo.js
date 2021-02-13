@@ -1,35 +1,39 @@
 import React, {Component} from 'react';
-import s from './todo.module.css';
 import Task from '../Task/Task';
 import AddTask from '../AddTask/AddTask';
+import {Row, Container} from 'react-bootstrap';
+import idGenerator from '../../helpers/idGenerator'
 
 class ToDo extends Component {
     state = {
-        tasks:["Task1", "Task2", "Task3", "Task4"],
+        tasks: ["Task1", "Task2", "Task3", "Task4"],
     }
 
     handleAdd = (value) => {
-        if(!value) return;
+        if (!value) return;
         const tasks = [...this.state.tasks];
         tasks.push(value);
         this.setState({
-            tasks:tasks
+            tasks: tasks
         })
     }
 
-    render(){
+    render() {
 
-        const Tasks = this.state.tasks.map((task,index)=>{
-            return <Task task={task} key={index} />
+        const Tasks = this.state.tasks.map((task, index) => {
+            return <Task task={task} key={idGenerator()}/>
         })
 
         return (
-            <div>
-                <AddTask onSubmit={this.handleAdd}/>
-                <div className={s.tasks}>
-                    { Tasks }
-                </div>
-            </div>
+            <Container>
+                <Row>
+                    <AddTask onSubmit={this.handleAdd}/>
+                </Row>
+                <Row className="justify-content-center">
+                    {Tasks}
+                </Row>
+            </Container>
+
         )
     }
 }

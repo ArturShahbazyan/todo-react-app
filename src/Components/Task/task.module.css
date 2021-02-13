@@ -2,10 +2,11 @@
     width:220px;
     margin: 15px;
     padding: 13px 11px 15px;
-    color: #61dafb;
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: #282c34;
     box-shadow: 0 3px 18px rgba(0,0,0,0.3);
     border-radius: 6px;
+    text-align: center;
 
 }
 

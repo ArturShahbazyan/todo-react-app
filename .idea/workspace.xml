@@ -2,21 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/AddTask/addtask.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Task/task.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/ToDo/todo.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helpers/idGenerator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AddNewTask.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ToDo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/task.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/task.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ToDo/todo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/todo.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -82,6 +76,8 @@
       <workItem from="1612274944816" duration="8364000" />
       <workItem from="1612545946549" duration="10751000" />
       <workItem from="1612607345170" duration="7488000" />
+      <workItem from="1613154239697" duration="13381000" />
+      <workItem from="1613210861945" duration="1630000" />
     </task>
     <servers />
   </component>
