@@ -1,6 +1,5 @@
 import React from 'react';
 import s from "./addtask.module.css";
-import {Col} from 'react-bootstrap';
 
 class AddTask extends React.Component {
 
@@ -28,10 +27,10 @@ class AddTask extends React.Component {
         }
 
         return (
-            <Col md={12} className={`${s.add_task_col} d-flex justify-content-center mb-4`}>
+            <div className={`${s.add_task_col} d-flex justify-content-center mb-4`}>
                 <input onChange={this.handleChange} type="text" placeholder="add a new todo..." value={value}/>
                 <button onClick={handleSubmit}>Add</button>
-            </Col>
+            </div>
 
         )
     }

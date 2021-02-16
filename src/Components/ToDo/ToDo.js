@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import Task from '../Task/Task';
 import AddTask from '../AddTask/AddTask';
-import {Row, Container} from 'react-bootstrap';
+import {Row, Container, Col} from 'react-bootstrap';
 import idGenerator from '../../helpers/idGenerator'
+import s from "../AddTask/addtask.module.css";
 
 class ToDo extends Component {
     state = {
@@ -21,15 +22,26 @@ class ToDo extends Component {
     render() {
 
         const Tasks = this.state.tasks.map((task, index) => {
-            return <Task task={task} key={idGenerator()}/>
+            return (
+                <Col key={idGenerator()}
+                     xs={12}
+                     md={6}
+                     xl={4}
+                     className="d-flex justify-content-center"
+                >
+                    <Task task={task}/>
+                </Col>
+            )
         })
 
         return (
             <Container>
                 <Row>
-                    <AddTask onSubmit={this.handleAdd}/>
+                    <Col md={12}>
+                        <AddTask onSubmit={this.handleAdd}/>
+                    </Col>
                 </Row>
-                <Row className="justify-content-center">
+                <Row className="mt-3">
                     {Tasks}
                 </Row>
             </Container>
