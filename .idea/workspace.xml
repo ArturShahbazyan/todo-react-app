@@ -4,8 +4,6 @@
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +76,7 @@
       <workItem from="1613313358584" duration="696000" />
       <workItem from="1613489284780" duration="3682000" />
       <workItem from="1613550598879" duration="11396000" />
-      <workItem from="1613586457048" duration="10754000" />
+      <workItem from="1613586457048" duration="11555000" />
     </task>
     <servers />
   </component>

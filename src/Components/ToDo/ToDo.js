@@ -71,7 +71,8 @@ class ToDo extends Component {
         )
 
         this.setState({
-            tasks
+            tasks,
+            removeTasks:[]
         })
     }
 
