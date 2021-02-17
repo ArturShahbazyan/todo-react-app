@@ -5,7 +5,13 @@
     background-color: #282c34;
     box-shadow: 0 3px 18px rgba(0,0,0,0.3);
     text-align: center;
+    width: 18rem;
+    display: flex;
+    flex-direction: column;
+}
 
+.card_buttons {
+   margin-top: auto;
 }
 
 .logo {
