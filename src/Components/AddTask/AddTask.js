@@ -30,6 +30,7 @@ class AddTask extends React.Component {
 
         const {value} = this.state;
 
+
         return (
 
             <div className="d-flex justify-content-center mb-4">
