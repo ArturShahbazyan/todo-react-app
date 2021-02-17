@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "./addtask.module.css";
+import {Form, Button} from 'react-bootstrap';
 
 class AddTask extends React.Component {
 
@@ -14,24 +14,44 @@ class AddTask extends React.Component {
         })
     }
 
-    render() {
+    handleSubmit = (e) => {
+
+        if (e.type === 'keypress' && e.key !== 'Enter') return;
 
         const {value} = this.state;
         const {onSubmit} = this.props;
+        onSubmit(value);
+        this.setState({
+            value: ''
+        })
+    }
 
-        const handleSubmit = () => {
-            onSubmit(value);
-            this.setState({
-                value: ''
-            })
-        }
+    render() {
+
+        const {value} = this.state;
 
         return (
-            <div className={`${s.add_task_col} d-flex justify-content-center mb-4`}>
-                <input onChange={this.handleChange} type="text" placeholder="add a new todo..." value={value}/>
-                <button onClick={handleSubmit}>Add</button>
-            </div>
 
+            <div className="d-flex justify-content-center mb-4">
+                <Form.Control
+                    type="text"
+                    placeholder="add a new task..."
+                    onChange={this.handleChange}
+                    onKeyPress={this.handleSubmit}
+                    value={value}
+                    style={{width: "40%"}}
+
+                />
+                <Button
+                    variant="info"
+                    onClick={this.handleSubmit}
+                    disabled={!!!value}
+                    className="ml-2"
+                >
+                    Add Task
+                </Button>
+
+            </div>
         )
     }
 }

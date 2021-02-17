@@ -1,29 +1,19 @@
-.task_item {
+.card {
     margin: 15px;
-    padding: 13px 11px 15px;
+    padding: 5px 11px 5px;
     color: #ffffff;
     background-color: #282c34;
     box-shadow: 0 3px 18px rgba(0,0,0,0.3);
-    border-radius: 6px;
     text-align: center;
 
 }
 
 .logo {
-    width: 30%;
+    width: 20%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .logo {
-        animation: logo-spin infinite 15s linear;
-    }
+.checkbox {
+    position: absolute;
+    right: 13px;
 }
 
-@keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}

@@ -2,20 +2,47 @@ import React, {Component} from 'react';
 import Task from '../Task/Task';
 import AddTask from '../AddTask/AddTask';
 import {Row, Container, Col} from 'react-bootstrap';
-import idGenerator from '../../helpers/idGenerator'
-import s from "../AddTask/addtask.module.css";
+import idGenerator from '../../helpers/idGenerator';
 
 class ToDo extends Component {
+
     state = {
-        tasks: ["Task1", "Task2", "Task3", "Task4"],
+        tasks: [
+            {
+                id: idGenerator(),
+                title: `React  is an open-source, front end, JavaScript library.`
+            },
+            {
+                id: idGenerator(),
+                title: `Vue   is an open-source model–view–viewmodel front end
+                        JavaScript framework.`
+            },
+            {
+                id: idGenerator(),
+                title: `Angular is a TypeScript-based open-source web application framework.`
+            }
+        ],
     }
 
     handleAdd = (value) => {
         if (!value) return;
         const tasks = [...this.state.tasks];
-        tasks.push(value);
+        tasks.push({
+                id: idGenerator(),
+                title: value
+            }
+        );
+
         this.setState({
             tasks: tasks
+        })
+    }
+
+    handleDelete = (task_id) =>{
+        let tasks = [...this.state.tasks];
+        tasks = tasks.filter((task) => task_id !== task.id)
+        this.setState({
+             tasks
         })
     }
 
@@ -23,13 +50,13 @@ class ToDo extends Component {
 
         const Tasks = this.state.tasks.map((task, index) => {
             return (
-                <Col key={idGenerator()}
+                <Col key={task.id}
                      xs={12}
                      md={6}
                      xl={4}
                      className="d-flex justify-content-center"
                 >
-                    <Task task={task}/>
+                    <Task task={task} handleDelete={this.handleDelete}/>
                 </Col>
             )
         })
