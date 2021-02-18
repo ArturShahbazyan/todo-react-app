@@ -49,30 +49,30 @@ class ToDo extends Component {
 
     handleCheckedTasks = (task_id) => {
 
-        let checkedTasks = [...this.state.checkedTasks];
+        let checkedTasks = this.state.checkedTasks;
+        checkedTasks = new Set(checkedTasks);
 
-        if (checkedTasks.includes(task_id)) {
-            checkedTasks = checkedTasks.filter(checkedTaskId => task_id !== checkedTaskId)
-        } else {
-            checkedTasks.push(task_id);
-        }
+        checkedTasks.has(task_id) ? checkedTasks.delete(task_id) : checkedTasks.add(task_id);
+
         this.setState({
             checkedTasks
         })
-
     }
 
     handleRemoveSelectedTasks = () => {
-        let tasks = [...this.state.tasks];
-        const checkedTasks = [...this.state.checkedTasks];
 
-        tasks = tasks.filter((task) =>
-            !checkedTasks.includes(task.id)
+        let checkedTasks = this.state.checkedTasks;
+        checkedTasks = new Set(checkedTasks);
+        let tasks = [...this.state.tasks];
+
+        checkedTasks.forEach((taskId) => {
+                tasks = tasks.filter((task) => taskId !== task.id)
+            }
         )
 
         this.setState({
             tasks,
-            removeTasks:[]
+            checkedTasks: new Set()
         })
     }
 
@@ -81,7 +81,7 @@ class ToDo extends Component {
         const checkedTasks = this.state.checkedTasks;
         const tasks = this.state.tasks;
 
-        const Tasks = this.state.tasks.map((task, index) => {
+        const Tasks = tasks.map((task) => {
             return (
                 <Col key={task.id}
                      xs={12}
@@ -92,7 +92,7 @@ class ToDo extends Component {
                     <Task task={task}
                           handleDelete={this.handleDelete}
                           handleCheckedTasks={this.handleCheckedTasks}
-                          disabled={!!checkedTasks.length}
+                          disabled={!!checkedTasks.size}
                     />
                 </Col>
             )
@@ -102,7 +102,7 @@ class ToDo extends Component {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <AddTask onSubmit={this.handleAdd} />
+                        <AddTask onSubmit={this.handleAdd} disabled={!!checkedTasks.size}/>
                     </Col>
                 </Row>
                 <Row className="mt-3">
@@ -114,14 +114,13 @@ class ToDo extends Component {
                         <Button
                             variant="danger"
                             onClick={this.handleRemoveSelectedTasks}
-                            disabled={!!!checkedTasks.length}
+                            disabled={!!!checkedTasks.size}
                         >
                             Remove Selected
                         </Button>
                     </Col>
                 </Row>
             </Container>
-
         )
     }
 }
