@@ -22,7 +22,7 @@ class ToDo extends Component {
                 title: `Angular is a TypeScript-based open-source web application framework.`
             }
         ],
-        checkedTasks: []
+        checkedTasks: new Set()
     }
 
     handleAdd = (value) => {
