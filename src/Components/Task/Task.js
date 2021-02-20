@@ -1,13 +1,15 @@
 import s from './task.module.css';
 import logo from '../../logo.svg';
+import {memo} from "react";
 import {Card, Button, Form} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 
-const Task = ({task, disabled, handleDelete, handleCheckedTasks}) => {
+const Task = ({task, checked, disabled, handleDelete, handleCheckedTasks}) => {
+
     return (
 
-        <Card className={s.card}>
+        <Card className={`${s.card} ${checked && s.checked}`}>
             <Card.Img variant="top" src={logo} alt="logo" className={s.logo}/>
             <Form.Check type="checkbox"
                         className={s.checkbox}
@@ -32,4 +34,4 @@ const Task = ({task, disabled, handleDelete, handleCheckedTasks}) => {
     )
 }
 
-export default Task;
+export default memo(Task);
