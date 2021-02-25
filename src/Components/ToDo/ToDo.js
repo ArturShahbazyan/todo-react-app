@@ -9,27 +9,27 @@ class ToDo extends Component {
     state = {
         tasks: [
             {
-                id: idGenerator(),
+                _id: idGenerator(),
                 title: `React  is an open-source, front end, JavaScript library.`
             },
             {
-                id: idGenerator(),
-                title: `Vue   is an open-source model–view–viewmodel front end
+                _id: idGenerator(),
+                title: `Vue   is an open-source model–view–viewModel front end
                         JavaScript framework.`
             },
             {
-                id: idGenerator(),
+                _id: idGenerator(),
                 title: `Angular is a TypeScript-based open-source web application framework.`
             }
         ],
-        checkedTasks: new Set()
+        checkedTasks: new Set(),
     }
 
     handleAdd = (value) => {
         if (!value) return;
         const tasks = [...this.state.tasks];
         tasks.push({
-                id: idGenerator(),
+                _id: idGenerator(),
                 title: value
             }
         );
@@ -41,7 +41,7 @@ class ToDo extends Component {
 
     handleDelete = (task_id) => {
         let tasks = [...this.state.tasks];
-        tasks = tasks.filter((task) => task_id !== task.id)
+        tasks = tasks.filter((task) => task_id !== task._id)
         this.setState({
             tasks
         })
@@ -61,12 +61,11 @@ class ToDo extends Component {
 
     handleRemoveSelectedTasks = () => {
 
-        let checkedTasks = this.state.checkedTasks;
-        checkedTasks = new Set(checkedTasks);
+        const checkedTasks = this.state.checkedTasks;
         let tasks = [...this.state.tasks];
 
         checkedTasks.forEach((taskId) => {
-                tasks = tasks.filter((task) => taskId !== task.id)
+                tasks = tasks.filter((task) => taskId !== task._id)
             }
         )
 
@@ -74,6 +73,23 @@ class ToDo extends Component {
             tasks,
             checkedTasks: new Set()
         })
+    }
+
+    handleSelectTasks = () => {
+
+        const tasks = this.state.tasks;
+        let checkedTasks = new Set(this.state.checkedTasks);
+
+        !checkedTasks.size ?
+            tasks.forEach((task) => {
+                checkedTasks.add(task._id);
+                this.setState({
+                    checkedTasks
+                })
+            }) :
+            this.setState({
+                checkedTasks: new Set()
+            })
     }
 
     render() {
@@ -84,7 +100,7 @@ class ToDo extends Component {
 
         const Tasks = tasks.map((task) => {
             return (
-                <Col key={task.id}
+                <Col key={task._id}
                      xs={12}
                      md={6}
                      xl={4}
@@ -94,7 +110,7 @@ class ToDo extends Component {
                           handleDelete={this.handleDelete}
                           handleCheckedTasks={this.handleCheckedTasks}
                           disabled={!!checkedTasks.size}
-                          checked={checkedTasks.has(task.id)}
+                          checked={checkedTasks.has(task._id)}
                     />
                 </Col>
             )
@@ -119,6 +135,14 @@ class ToDo extends Component {
                             disabled={!!!checkedTasks.size}
                         >
                             Remove Selected
+                        </Button>
+                        <Button
+                            variant="info"
+                            className="ml-3"
+                            onClick={this.handleSelectTasks}
+                            disabled={!tasks.length}
+                        >
+                            {!checkedTasks.size ? "Select All" : "Unselect All"}
                         </Button>
                     </Col>
                 </Row>

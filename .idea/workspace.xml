@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/task.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/task.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +86,12 @@
       <workItem from="1613647979925" duration="1377000" />
       <workItem from="1613773630509" duration="587000" />
       <workItem from="1613775986999" duration="61000" />
-      <workItem from="1613821506827" duration="1769000" />
+      <workItem from="1613821506827" duration="3486000" />
+      <workItem from="1614092210026" duration="1921000" />
+      <workItem from="1614101299261" duration="4734000" />
+      <workItem from="1614123446864" duration="65000" />
+      <workItem from="1614189054131" duration="9007000" />
+      <workItem from="1614264194944" duration="1202000" />
     </task>
     <servers />
   </component>

@@ -13,19 +13,20 @@ const Task = ({task, checked, disabled, handleDelete, handleCheckedTasks}) => {
             <Card.Img variant="top" src={logo} alt="logo" className={s.logo}/>
             <Form.Check type="checkbox"
                         className={s.checkbox}
-                        onClick={() => handleCheckedTasks(task.id)}
+                        onChange={() => handleCheckedTasks(task._id)}
+                        checked={checked}
             />
             <Card.Body className="d-flex flex-column">
                 <Card.Title>{task.title.slice(0, 6)}</Card.Title>
                 <Card.Text>{task.title}</Card.Text>
                 <div className={s.card_buttons}>
-                    <Button variant="danger"
+                    <Button variant="outline-danger"
                             className="mr-3"
-                            onClick={() => handleDelete(task.id)}
+                            onClick={() => handleDelete(task._id)}
                             disabled={disabled}
                     >
                         <FontAwesomeIcon icon={faTrash}/></Button>
-                    <Button variant="info" disabled={disabled}>
+                    <Button variant="outline-info" disabled={disabled}>
                         <FontAwesomeIcon icon={faEdit}/>
                     </Button>
                 </div>
