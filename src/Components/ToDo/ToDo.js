@@ -97,7 +97,6 @@ class ToDo extends Component {
         const checkedTasks = this.state.checkedTasks;
         const tasks = this.state.tasks;
 
-
         const Tasks = tasks.map((task) => {
             return (
                 <Col key={task._id}

@@ -4,6 +4,7 @@ import {memo} from "react";
 import {Card, Button, Form} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
 
 const Task = ({task, checked, disabled, handleDelete, handleCheckedTasks}) => {
 
@@ -33,6 +34,17 @@ const Task = ({task, checked, disabled, handleDelete, handleCheckedTasks}) => {
             </Card.Body>
         </Card>
     )
+}
+
+Task.propTypes = {
+    task: PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired
+    }),
+    checked: PropTypes.bool.isRequired,
+    disabled: PropTypes.bool.isRequired,
+    handleDelete: PropTypes.func.isRequired,
+    handleCheckedTasks: PropTypes.func.isRequired
 }
 
 export default memo(Task);
