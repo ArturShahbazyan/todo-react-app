@@ -3,20 +3,21 @@ import {Form, Button} from 'react-bootstrap';
 import PropTypes from "prop-types";
 
 class AddTask extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
-            value: ''
+            title: '',
+            description: ''
         }
 
         this.addTaskInput = React.createRef();
     }
 
     handleChange = (e) => {
-        const {value} = e.target;
+        const {name, value} = e.target;
         this.setState({
-            value
+            [name]:value
         })
     }
 
@@ -24,12 +25,19 @@ class AddTask extends React.Component {
 
         if (e.type === 'keypress' && e.key !== 'Enter') return;
 
-        const {value} = this.state;
+        const {title, description} = this.state;
         const {onSubmit} = this.props;
 
-        onSubmit(value);
+        const taskData = {
+            title,
+            description
+        }
+
+        onSubmit(taskData);
+
         this.setState({
-            value: ''
+            title: '',
+            description: ''
         })
     }
 
@@ -39,26 +47,39 @@ class AddTask extends React.Component {
 
     render() {
 
-        const {value} = this.state;
+        const {title, description} = this.state;
         const {disabled} = this.props;
 
         return (
 
-            <div className="d-flex justify-content-center mb-4">
+            <div className="d-flex flex-column align-items-center mb-4">
                 <Form.Control
                     type="text"
-                    placeholder="add a new task..."
+                    placeholder="title"
                     onChange={this.handleChange}
                     onKeyPress={this.handleSubmit}
-                    value={value}
-                    style={{width: "40%"}}
+                    value={title}
+                    style={{width: "60%"}}
                     disabled={disabled}
                     ref={this.addTaskInput}
+                    name="title"
+                />
+                <Form.Control
+                    as="textarea"
+                    rows={1}
+                    placeholder="description"
+                    className="my-2"
+                    style={{width: "60%", resize:"none"}}
+                    disabled={disabled}
+                    name="description"
+                    value={description}
+                    onChange={this.handleChange}
+                    onKeyPress={this.handleSubmit}
                 />
                 <Button
                     variant="info"
                     onClick={this.handleSubmit}
-                    disabled={!!!value}
+                    disabled={!(!!title && !!description)}
                     className="ml-2"
                 >
                     Add Task

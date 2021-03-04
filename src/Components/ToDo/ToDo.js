@@ -3,6 +3,8 @@ import Task from '../Task/Task';
 import AddTask from '../AddTask/AddTask';
 import {Row, Container, Col, Button} from 'react-bootstrap';
 import idGenerator from '../../helpers/idGenerator';
+import Confirm from '../Modals/Confirm/Confirm';
+import EditModal from "../Modals/EditModal/EditModal";
 
 class ToDo extends Component {
 
@@ -10,27 +12,32 @@ class ToDo extends Component {
         tasks: [
             {
                 _id: idGenerator(),
-                title: `React  is an open-source, front end, JavaScript library.`
+                title: 'React',
+                description: 'React is an open-source, front end, JavaScript library.'
             },
             {
                 _id: idGenerator(),
-                title: `Vue   is an open-source model–view–viewModel front end
-                        JavaScript framework.`
+                title: 'Vue',
+                description: 'Vue is an open-source model–view–viewModel front end JavaScript framework.'
             },
             {
                 _id: idGenerator(),
-                title: `Angular is a TypeScript-based open-source web application framework.`
+                title: 'Angular',
+                description: 'Angular is a TypeScript-based open-source web application framework.'
             }
         ],
         checkedTasks: new Set(),
+        isModalOpen: false,
+        editableTask: null
     }
 
-    handleAdd = (value) => {
-        if (!value) return;
+    handleAdd = ({title, description}) => {
+        if (!title || !description) return;
         const tasks = [...this.state.tasks];
         tasks.push({
                 _id: idGenerator(),
-                title: value
+                title,
+                description
             }
         );
 
@@ -92,10 +99,40 @@ class ToDo extends Component {
             })
     }
 
+    handleToggleModal = () => {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        })
+    }
+
+    handleToggleEditTask = (task) => {
+        this.setState({
+            editableTask: !this.state.editableTask ? task : null
+        })
+    }
+
+
+    handleReceivedEditTask = (editedTask) => {
+
+        let tasks = [...this.state.tasks];
+
+        const idx = tasks.findIndex((task) => editedTask._id === task._id);
+        tasks[idx] = editedTask;
+
+        this.setState({
+            tasks
+        })
+    }
+
+
     render() {
 
-        const checkedTasks = this.state.checkedTasks;
-        const tasks = this.state.tasks;
+        const {
+            checkedTasks,
+            tasks,
+            isModalOpen,
+            editableTask
+        } = this.state;
 
         const Tasks = tasks.map((task) => {
             return (
@@ -110,42 +147,61 @@ class ToDo extends Component {
                           handleCheckedTasks={this.handleCheckedTasks}
                           disabled={!!checkedTasks.size}
                           checked={checkedTasks.has(task._id)}
+                          handleToggleEditTask={this.handleToggleEditTask}
                     />
                 </Col>
             )
         })
 
         return (
-            <Container>
-                <Row>
-                    <Col md={12}>
-                        <AddTask onSubmit={this.handleAdd} disabled={!!checkedTasks.size}/>
-                    </Col>
-                </Row>
-                <Row className="mt-3">
-                    {!tasks.length && <div>Tasks is Empty</div>}
-                    {Tasks}
-                </Row>
-                <Row className="mt-4">
-                    <Col className="d-flex justify-content-center">
-                        <Button
-                            variant="danger"
-                            onClick={this.handleRemoveSelectedTasks}
-                            disabled={!!!checkedTasks.size}
-                        >
-                            Remove Selected
-                        </Button>
-                        <Button
-                            variant="info"
-                            className="ml-3"
-                            onClick={this.handleSelectTasks}
-                            disabled={!tasks.length}
-                        >
-                            {!checkedTasks.size ? "Select All" : "Unselect All"}
-                        </Button>
-                    </Col>
-                </Row>
-            </Container>
+            <>
+                <Container>
+                    <Row>
+                        <Col md={12}>
+                            <AddTask onSubmit={this.handleAdd} disabled={!!checkedTasks.size}/>
+                        </Col>
+                    </Row>
+                    <Row className="mt-3">
+                        {!tasks.length && <div>Tasks is Empty</div>}
+                        {Tasks}
+                    </Row>
+                    <Row className="mt-4">
+                        <Col className="d-flex justify-content-center">
+                            <Button
+                                variant="danger"
+                                onClick={this.handleToggleModal}
+                                disabled={!!!checkedTasks.size}
+                            >
+                                Remove Selected
+                            </Button>
+                            <Button
+                                variant="info"
+                                className="ml-3"
+                                onClick={this.handleSelectTasks}
+                                disabled={!tasks.length}
+                            >
+                                {!checkedTasks.size ? "Select All" : "Unselect All"}
+                            </Button>
+                        </Col>
+                    </Row>
+                </Container>
+                {
+                    isModalOpen && <Confirm
+                        onHide={this.handleToggleModal}
+                        tasksCount={`Do you want to delete ${checkedTasks.size} tasks?`}
+                        onDeleteTasks={this.handleRemoveSelectedTasks}
+
+                    />
+                }
+
+                {
+                    editableTask && <EditModal
+                        handleToggleEditTask={this.handleToggleEditTask}
+                        editableTask={editableTask}
+                        handleReceivedEditTask={this.handleReceivedEditTask}
+                    />
+                }
+            </>
         )
     }
 }

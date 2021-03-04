@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Modals/EditModal/EditModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,10 +62,11 @@
       <recent name="$PROJECT_DIR$/src/Components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Components/Modals" />
+      <recent name="$PROJECT_DIR$/src/Components" />
       <recent name="$PROJECT_DIR$/src/Components/ToDo" />
       <recent name="$PROJECT_DIR$/src/Components/AddTask" />
       <recent name="$PROJECT_DIR$/src/Components/Task" />
-      <recent name="$PROJECT_DIR$/src/Components" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -96,7 +99,12 @@
       <workItem from="1614264194944" duration="2381000" />
       <workItem from="1614334806085" duration="1818000" />
       <workItem from="1614443488221" duration="916000" />
-      <workItem from="1614444440830" duration="4164000" />
+      <workItem from="1614444440830" duration="5810000" />
+      <workItem from="1614510211575" duration="1373000" />
+      <workItem from="1614621807295" duration="13459000" />
+      <workItem from="1614675198647" duration="22882000" />
+      <workItem from="1614720939553" duration="795000" />
+      <workItem from="1614860520141" duration="10013000" />
     </task>
     <servers />
   </component>
