@@ -28,7 +28,6 @@ class ToDo extends Component {
         checkedTasks: new Set(),
         isConfirmModalOpen: false,
         editableTask: null,
-        isEdit: false,
         isAdd: false
     }
 
@@ -106,12 +105,6 @@ class ToDo extends Component {
         })
     }
 
-    handleEditTask = (task) => {
-        this.setState({
-            editableTask: task
-        })
-    }
-
     handleReceivedEditTask = (editedTask) => {
 
         let tasks = [...this.state.tasks];
@@ -124,13 +117,13 @@ class ToDo extends Component {
         })
     }
 
-    handleOpenEditModal = () => {
+    handleToggleEditModal = (task) => {
         this.setState({
-            isEdit: !this.state.isEdit
+            editableTask: !this.state.editableTask ? task : null
         })
     }
 
-    handleOpenAddModal = () => {
+    handleToggleAddModal = () => {
         this.setState({
             isAdd: !this.state.isAdd
         })
@@ -143,7 +136,6 @@ class ToDo extends Component {
             tasks,
             isConfirmModalOpen,
             editableTask,
-            isEdit,
             isAdd
         } = this.state;
 
@@ -160,8 +152,7 @@ class ToDo extends Component {
                           handleCheckedTasks={this.handleCheckedTasks}
                           disabled={!!checkedTasks.size}
                           checked={checkedTasks.has(task._id)}
-                          handleOpenEditModal={this.handleOpenEditModal}
-                          handleEditTask={this.handleEditTask}
+                          handleToggleEditModal={this.handleToggleEditModal}
                     />
                 </Col>
             )
@@ -174,7 +165,7 @@ class ToDo extends Component {
                         <Col md={12} className="d-flex justify-content-center">
                             <Button
                                 variant="secondary"
-                                onClick={this.handleOpenAddModal}
+                                onClick={this.handleToggleAddModal}
                             >
                                 Add task
                             </Button>
@@ -214,10 +205,9 @@ class ToDo extends Component {
                 }
 
                 {
-                    (isAdd || isEdit) && <AddEditModal
+                    (isAdd || editableTask) && <AddEditModal
                         editableTask={editableTask}
-                        isEdit={isEdit}
-                        onHide={isAdd ? this.handleOpenAddModal : this.handleOpenEditModal}
+                        onHide={isAdd ? this.handleToggleAddModal : this.handleToggleEditModal}
                         onSubmit={isAdd ? this.handleAdd : this.handleReceivedEditTask}
                     />
                 }

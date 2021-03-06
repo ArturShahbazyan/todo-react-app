@@ -14,13 +14,11 @@ const Task = (props) => {
         disabled,
         handleDelete,
         handleCheckedTasks,
-        handleEditTask,
-        handleOpenEditModal
+        handleToggleEditModal
     } = props;
 
     const handleOpenAndEdit = () => {
-        handleOpenEditModal();
-        handleEditTask(task)
+        handleToggleEditModal(task);
     }
 
     return (
@@ -64,8 +62,7 @@ Task.propTypes = {
     disabled: PropTypes.bool.isRequired,
     handleDelete: PropTypes.func.isRequired,
     handleCheckedTasks: PropTypes.func.isRequired,
-    handleEditTask: PropTypes.func.isRequired,
-    handleOpenEditModal: PropTypes.func.isRequired,
+    handleToggleEditModal: PropTypes.func.isRequired,
 }
 
 export default memo(Task);

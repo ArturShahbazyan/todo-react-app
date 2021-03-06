@@ -6,12 +6,12 @@ class AddEditModal extends React.Component {
     constructor(props) {
         super(props);
 
-        const isEdit = this.props.isEdit;
+        const editableTask = this.props.editableTask;
 
         this.state = {
-            title: isEdit ? this.props.editableTask.title : '',
-            description: isEdit ? this.props.editableTask.description : '',
-            _id: isEdit ? this.props.editableTask._id : ''
+            title: editableTask ? this.props.editableTask.title : '',
+            description: editableTask ? this.props.editableTask.description : '',
+            _id: editableTask ? this.props.editableTask._id : ''
         }
 
         this.addTaskInput = React.createRef();
@@ -28,10 +28,10 @@ class AddEditModal extends React.Component {
 
         if (e.type === 'keypress' && e.key !== 'Enter') return;
 
-        const {onSubmit, onHide, isEdit} = this.props;
+        const {onSubmit, onHide, editableTask} = this.props;
         const {title, description} = this.state;
 
-        if(isEdit){
+        if(editableTask){
 
             const editedTask = this.state;
 
@@ -61,13 +61,13 @@ class AddEditModal extends React.Component {
     render() {
 
         const {title, description} = this.state;
-        const {onHide, isEdit} = this.props;
+        const {onHide, editableTask} = this.props;
 
         return (
 
             <Modal show={true} onHide={onHide} >
                 <Modal.Header closeButton>
-                    { isEdit ? 'Edit Task' : 'Add Task' }
+                    { !!editableTask ? 'Edit Task' : 'Add Task' }
                 </Modal.Header>
                 <div className="p-3 d-flex flex-column justify-content-center">
                     <Form.Control
@@ -101,7 +101,7 @@ class AddEditModal extends React.Component {
                                 onClick={this.handleSend}
                                 disabled={!(!!title && !!description)}
                         >
-                            { isEdit ? 'Edit Task' : 'Add Task' }
+                            { !!editableTask ? 'Edit Task' : 'Add Task' }
                         </Button>
                     </div>
                 </div>
@@ -116,7 +116,6 @@ AddEditModal.propTypes = {
         title: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired
     }),
-    isEdit:PropTypes.bool.isRequired,
     onHide:PropTypes.func.isRequired,
     onSubmit:PropTypes.func.isRequired
 }
