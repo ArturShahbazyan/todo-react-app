@@ -26,11 +26,9 @@ class AddEditModal extends React.Component {
 
     handleSend = (e) => {
 
-        const isEdit = this.props.isEdit;
-
         if (e.type === 'keypress' && e.key !== 'Enter') return;
 
-        const {onSubmit, onHide} = this.props;
+        const {onSubmit, onHide, isEdit} = this.props;
         const {title, description} = this.state;
 
         if(isEdit){
