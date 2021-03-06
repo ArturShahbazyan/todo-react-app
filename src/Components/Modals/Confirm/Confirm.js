@@ -7,7 +7,6 @@ const Confirm = ({onHide, tasksCount, onDeleteTasks}) => {
         onDeleteTasks();
         onHide()
     }
-    console.log(tasksCount);
 
     return (
         <Modal show={true} onHide={onHide}>

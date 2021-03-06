@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import Task from '../Task/Task';
-import AddTask from '../AddTask/AddTask';
 import {Row, Container, Col, Button} from 'react-bootstrap';
 import idGenerator from '../../helpers/idGenerator';
 import Confirm from '../Modals/Confirm/Confirm';
-import EditModal from "../Modals/EditModal/EditModal";
+import AddEditModal from "../Modals/AddEditModal/AddEditModal";
 
 class ToDo extends Component {
 
@@ -27,8 +26,10 @@ class ToDo extends Component {
             }
         ],
         checkedTasks: new Set(),
-        isModalOpen: false,
-        editableTask: null
+        isConfirmModalOpen: false,
+        editableTask: null,
+        isEdit: false,
+        isAdd: false
     }
 
     handleAdd = ({title, description}) => {
@@ -101,16 +102,15 @@ class ToDo extends Component {
 
     handleToggleModal = () => {
         this.setState({
-            isModalOpen: !this.state.isModalOpen
+            isConfirmModalOpen: !this.state.isConfirmModalOpen
         })
     }
 
-    handleToggleEditTask = (task) => {
+    handleEditTask = (task) => {
         this.setState({
-            editableTask: !this.state.editableTask ? task : null
+            editableTask: task
         })
     }
-
 
     handleReceivedEditTask = (editedTask) => {
 
@@ -124,14 +124,27 @@ class ToDo extends Component {
         })
     }
 
+    handleOpenEditModal = () => {
+        this.setState({
+            isEdit: !this.state.isEdit
+        })
+    }
+
+    handleOpenAddModal = () => {
+        this.setState({
+            isAdd: !this.state.isAdd
+        })
+    }
 
     render() {
 
         const {
             checkedTasks,
             tasks,
-            isModalOpen,
-            editableTask
+            isConfirmModalOpen,
+            editableTask,
+            isEdit,
+            isAdd
         } = this.state;
 
         const Tasks = tasks.map((task) => {
@@ -147,7 +160,8 @@ class ToDo extends Component {
                           handleCheckedTasks={this.handleCheckedTasks}
                           disabled={!!checkedTasks.size}
                           checked={checkedTasks.has(task._id)}
-                          handleToggleEditTask={this.handleToggleEditTask}
+                          handleOpenEditModal={this.handleOpenEditModal}
+                          handleEditTask={this.handleEditTask}
                     />
                 </Col>
             )
@@ -157,8 +171,13 @@ class ToDo extends Component {
             <>
                 <Container>
                     <Row>
-                        <Col md={12}>
-                            <AddTask onSubmit={this.handleAdd} disabled={!!checkedTasks.size}/>
+                        <Col md={12} className="d-flex justify-content-center">
+                            <Button
+                                variant="secondary"
+                                onClick={this.handleOpenAddModal}
+                            >
+                                Add task
+                            </Button>
                         </Col>
                     </Row>
                     <Row className="mt-3">
@@ -186,7 +205,7 @@ class ToDo extends Component {
                     </Row>
                 </Container>
                 {
-                    isModalOpen && <Confirm
+                    isConfirmModalOpen && <Confirm
                         onHide={this.handleToggleModal}
                         tasksCount={`Do you want to delete ${checkedTasks.size} tasks?`}
                         onDeleteTasks={this.handleRemoveSelectedTasks}
@@ -195,10 +214,11 @@ class ToDo extends Component {
                 }
 
                 {
-                    editableTask && <EditModal
-                        handleToggleEditTask={this.handleToggleEditTask}
+                    (isAdd || isEdit) && <AddEditModal
                         editableTask={editableTask}
-                        handleReceivedEditTask={this.handleReceivedEditTask}
+                        isEdit={isEdit}
+                        onHide={isAdd ? this.handleOpenAddModal : this.handleOpenEditModal}
+                        onSubmit={isAdd ? this.handleAdd : this.handleReceivedEditTask}
                     />
                 }
             </>

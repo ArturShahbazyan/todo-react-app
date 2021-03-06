@@ -6,7 +6,22 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 
-const Task = ({task, checked, disabled, handleDelete, handleCheckedTasks, handleToggleEditTask}) => {
+const Task = (props) => {
+
+    const {
+        task,
+        checked,
+        disabled,
+        handleDelete,
+        handleCheckedTasks,
+        handleEditTask,
+        handleOpenEditModal
+    } = props;
+
+    const handleOpenAndEdit = () => {
+        handleOpenEditModal();
+        handleEditTask(task)
+    }
 
     return (
 
@@ -28,8 +43,7 @@ const Task = ({task, checked, disabled, handleDelete, handleCheckedTasks, handle
                     >
                         <FontAwesomeIcon icon={faTrash}/></Button>
                     <Button variant="outline-info"
-                            disabled={disabled}
-                            onClick={()=>handleToggleEditTask(task)}
+                            onClick={handleOpenAndEdit}
 
                     >
                         <FontAwesomeIcon icon={faEdit}/>
@@ -50,7 +64,8 @@ Task.propTypes = {
     disabled: PropTypes.bool.isRequired,
     handleDelete: PropTypes.func.isRequired,
     handleCheckedTasks: PropTypes.func.isRequired,
-    handleToggleEditTask: PropTypes.func.isRequired
+    handleEditTask: PropTypes.func.isRequired,
+    handleOpenEditModal: PropTypes.func.isRequired,
 }
 
 export default memo(Task);

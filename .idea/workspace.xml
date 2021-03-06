@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Modals/EditModal/EditModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Modals/AddEditModal/AddEditModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddTask/addtask.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Modals/EditModal/EditModal.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
@@ -54,7 +56,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
@@ -104,7 +106,9 @@
       <workItem from="1614621807295" duration="13459000" />
       <workItem from="1614675198647" duration="22882000" />
       <workItem from="1614720939553" duration="795000" />
-      <workItem from="1614860520141" duration="10013000" />
+      <workItem from="1614860520141" duration="45768000" />
+      <workItem from="1615033336799" duration="1656000" />
+      <workItem from="1615036955770" duration="825000" />
     </task>
     <servers />
   </component>
