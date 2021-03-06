@@ -101,6 +101,7 @@ class AddEditModal extends React.Component {
                         </Button>
                         <Button variant="info"
                                 onClick={this.handleSend}
+                                disabled={!(!!title && !!description)}
                         >
                             { isEdit ? 'Edit Task' : 'Add Task' }
                         </Button>
