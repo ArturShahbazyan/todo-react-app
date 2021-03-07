@@ -6,12 +6,12 @@ class AddEditModal extends React.Component {
     constructor(props) {
         super(props);
 
-        const editableTask = this.props.editableTask;
-
+        const editableTask = props.editableTask ? { ...props.editableTask } : {};
         this.state = {
-            title: editableTask ? this.props.editableTask.title : '',
-            description: editableTask ? this.props.editableTask.description : '',
-            _id: editableTask ? this.props.editableTask._id : ''
+            title: '',
+            description: '',
+            _id: '',
+            ...editableTask
         }
 
         this.addTaskInput = React.createRef();
@@ -31,27 +31,8 @@ class AddEditModal extends React.Component {
         const {onSubmit, onHide, editableTask} = this.props;
         const {title, description} = this.state;
 
-        if(editableTask){
-
-            const editedTask = this.state;
-
-            onSubmit(editedTask);
-            onHide();
-
-        }else{
-
-            const taskData = {
-                title,
-                description
-            }
-
-            onSubmit(taskData);
-
-            this.setState({
-                title: '',
-                description: ''
-            })
-        }
+        editableTask ? onSubmit(this.state) : onSubmit({title, description});
+        onHide();
     }
 
     componentDidMount() {

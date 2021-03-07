@@ -42,7 +42,7 @@ const Task = (props) => {
                         <FontAwesomeIcon icon={faTrash}/></Button>
                     <Button variant="outline-info"
                             onClick={handleOpenAndEdit}
-
+                            disabled={disabled}
                     >
                         <FontAwesomeIcon icon={faEdit}/>
                     </Button>

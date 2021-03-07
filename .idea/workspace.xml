@@ -5,8 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Modals/AddEditModal/AddEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/AddEditModal/AddEditModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +105,7 @@
       <workItem from="1615033336799" duration="1656000" />
       <workItem from="1615036955770" duration="2238000" />
       <workItem from="1615044160702" duration="2912000" />
+      <workItem from="1615104074808" duration="6566000" />
     </task>
     <servers />
   </component>

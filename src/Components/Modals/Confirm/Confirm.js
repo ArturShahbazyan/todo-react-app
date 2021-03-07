@@ -25,9 +25,9 @@ const Confirm = ({onHide, tasksCount, onDeleteTasks}) => {
 
 Confirm.propTypes = {
 
-    onHide: PropTypes.bool.isRequired,
-    onDeleteTasks: PropTypes.bool.isRequired,
-    tasksCount:PropTypes.number.isRequired
+    onHide: PropTypes.func.isRequired,
+    onDeleteTasks: PropTypes.func.isRequired,
+    tasksCount:PropTypes.string.isRequired
 }
 
 export default Confirm;
