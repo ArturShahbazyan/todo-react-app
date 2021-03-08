@@ -6,12 +6,11 @@ class AddEditModal extends React.Component {
     constructor(props) {
         super(props);
 
-        const editableTask = props.editableTask ? { ...props.editableTask } : {};
         this.state = {
             title: '',
             description: '',
             _id: '',
-            ...editableTask
+            ...props.editableTask
         }
 
         this.addTaskInput = React.createRef();

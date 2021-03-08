@@ -190,7 +190,7 @@ class ToDo extends Component {
                                 onClick={this.handleSelectTasks}
                                 disabled={!tasks.length}
                             >
-                                {!checkedTasks.size ? "Select All" : "Unselect All"}
+                                {!checkedTasks.size ? "Select All" : "Unselect"}
                             </Button>
                         </Col>
                     </Row>
