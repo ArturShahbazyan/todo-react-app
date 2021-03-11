@@ -1,8 +1,10 @@
 import React from 'react';
 import {Form, Button, Modal} from 'react-bootstrap';
 import PropTypes from "prop-types";
+import DatePicker from "react-datepicker";
+import dateFormatter from "../../../helpers/date";
 
-class AddEditModal extends React.Component {
+class ActionsModal extends React.Component {
     constructor(props) {
         super(props);
 
@@ -10,7 +12,8 @@ class AddEditModal extends React.Component {
             title: '',
             description: '',
             _id: '',
-            ...props.editableTask
+            date: new Date(),
+            ...props.editableTask,
         }
 
         this.addTaskInput = React.createRef();
@@ -23,15 +26,22 @@ class AddEditModal extends React.Component {
         })
     }
 
-    handleSend = (e) => {
+    handleSend = ({type, key}) => {
 
-        if (e.type === 'keypress' && e.key !== 'Enter') return;
+        if (type === 'keypress' && key !== 'Enter') return;
 
         const {onSubmit, onHide, editableTask} = this.props;
-        const {title, description} = this.state;
+        const taskData = {...this.state};
+        taskData.date = dateFormatter(taskData.date);
 
-        editableTask ? onSubmit(this.state) : onSubmit({title, description});
+        editableTask ? onSubmit(this.state) : onSubmit(taskData);
         onHide();
+    }
+
+    handleSetDate = (date) => {
+        this.setState({
+            date
+        })
     }
 
     componentDidMount() {
@@ -40,7 +50,7 @@ class AddEditModal extends React.Component {
 
     render() {
 
-        const {title, description} = this.state;
+        const {title, description, date} = this.state;
         const {onHide, editableTask} = this.props;
 
         return (
@@ -49,7 +59,7 @@ class AddEditModal extends React.Component {
                 <Modal.Header closeButton>
                     { !!editableTask ? 'Edit Task' : 'Add Task' }
                 </Modal.Header>
-                <div className="p-3 d-flex flex-column justify-content-center">
+                <Modal.Body>
                     <Form.Control
                         type="text"
                         placeholder="title"
@@ -70,7 +80,13 @@ class AddEditModal extends React.Component {
                         onChange={this.handleChange}
                         onKeyPress={this.handleSend}
                     />
-                    <div className="d-flex justify-content-center">
+                    <DatePicker
+                        selected={new Date(date)}
+                        onChange={date => this.handleSetDate(date)}
+                        className="form-control"
+                    />
+                </Modal.Body>
+                    <div className="d-flex justify-content-center mb-3">
                         <Button variant="secondary"
                                 className="mr-3"
                                 onClick={onHide}
@@ -81,16 +97,15 @@ class AddEditModal extends React.Component {
                                 onClick={this.handleSend}
                                 disabled={!(!!title && !!description)}
                         >
-                            { !!editableTask ? 'Edit Task' : 'Add Task' }
+                            { !!editableTask ? 'Save Task' : 'Add Task' }
                         </Button>
                     </div>
-                </div>
             </Modal>
         )
     }
 }
 
-AddEditModal.propTypes = {
+ActionsModal.propTypes = {
     editableTask: PropTypes.shape({
         _id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
@@ -100,4 +115,4 @@ AddEditModal.propTypes = {
     onSubmit:PropTypes.func.isRequired
 }
 
-export default AddEditModal;
+export default ActionsModal;

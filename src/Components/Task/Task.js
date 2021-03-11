@@ -4,6 +4,7 @@ import {memo} from "react";
 import {Card, Button, Form} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
+import dateFormatter from '../../helpers/date'
 import PropTypes from 'prop-types';
 
 const Task = (props) => {
@@ -33,7 +34,8 @@ const Task = (props) => {
             <Card.Body className="d-flex flex-column">
                 <Card.Title>{task.title}</Card.Title>
                 <Card.Text>{task.description}</Card.Text>
-                <div className={s.card_buttons}>
+                <Card.Text className="mt-auto">Created: {dateFormatter(task.date)}</Card.Text>
+                <div className="mt-2">
                     <Button variant="outline-danger"
                             className="mr-3"
                             onClick={() => handleDelete(task._id)}

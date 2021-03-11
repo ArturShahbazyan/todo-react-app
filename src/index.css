@@ -20,9 +20,10 @@ body .h5 {
   font-size: 23px;
 }
 
-.btn, .form-control {
-  font-size: 0.8rem;
+.react-datepicker-wrapper {
+  width: 40%;
 }
+
 
 
 

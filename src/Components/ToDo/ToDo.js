@@ -1,57 +1,60 @@
 import React, {Component} from 'react';
 import Task from '../Task/Task';
 import {Row, Container, Col, Button} from 'react-bootstrap';
-import idGenerator from '../../helpers/idGenerator';
 import Confirm from '../Modals/Confirm/Confirm';
-import AddEditModal from "../Modals/AddEditModal/AddEditModal";
+import ActionsModal from "../Modals/ActionsModal/ActionsModal";
+import dateFormatter from '../../helpers/date';
 
 class ToDo extends Component {
 
     state = {
-        tasks: [
-            {
-                _id: idGenerator(),
-                title: 'React',
-                description: 'React is an open-source, front end, JavaScript library.'
-            },
-            {
-                _id: idGenerator(),
-                title: 'Vue',
-                description: 'Vue is an open-source model–view–viewModel front end JavaScript framework.'
-            },
-            {
-                _id: idGenerator(),
-                title: 'Angular',
-                description: 'Angular is a TypeScript-based open-source web application framework.'
-            }
-        ],
+        tasks: [],
         checkedTasks: new Set(),
         isConfirmModalOpen: false,
         editableTask: null,
         isAdd: false
     }
 
-    handleAdd = ({title, description}) => {
-        if (!title || !description) return;
-        const tasks = [...this.state.tasks];
-        tasks.push({
-                _id: idGenerator(),
-                title,
-                description
-            }
-        );
+    handleAdd = (taskData) => {
+        if (!taskData.title || !taskData.description) return;
 
-        this.setState({
-            tasks: tasks
+        taskData.date = dateFormatter(taskData.date);
+        const tasks = [...this.state.tasks];
+
+        fetch("http://localhost:3001/task", {
+            method: "POST",
+            body: JSON.stringify(taskData),
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.error) throw data.error;
+                tasks.push(data);
+                this.setState({
+                    tasks
+                });
+            })
+            .catch(err => console.error("Create Task Request Error::", err));
     }
 
     handleDelete = (task_id) => {
-        let tasks = [...this.state.tasks];
-        tasks = tasks.filter((task) => task_id !== task._id)
-        this.setState({
-            tasks
+
+        fetch(`http://localhost:3001/task/${task_id}`, {
+            method: "DELETE"
         })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) throw data.error;
+                let tasks = [...this.state.tasks];
+                tasks = tasks.filter((task) => task_id !== task._id)
+                this.setState({
+                    tasks
+                });
+            })
+            .catch(err => console.error("Delete Task Request Error::", err));
+
     }
 
     handleCheckedTasks = (task_id) => {
@@ -68,18 +71,26 @@ class ToDo extends Component {
 
     handleRemoveSelectedTasks = () => {
 
-        const checkedTasks = this.state.checkedTasks;
-        let tasks = [...this.state.tasks];
-
-        checkedTasks.forEach((taskId) => {
-                tasks = tasks.filter((task) => taskId !== task._id)
+        fetch("http://localhost:3001/task", {
+            method: "PATCH",
+            body: JSON.stringify({tasks: Array.from(this.state.checkedTasks)}),
+            headers: {
+                "Content-Type": "application/json"
             }
-        )
-
-        this.setState({
-            tasks,
-            checkedTasks: new Set()
         })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) throw data.error;
+                const {checkedTasks} = this.state;
+                let tasks = [...this.state.tasks];
+                tasks = tasks.filter((task) => !checkedTasks.has(task._id));
+
+                this.setState({
+                    tasks,
+                    checkedTasks: new Set()
+                })
+            })
+            .catch(err => console.error("Delete Tasks Request Error::", err))
     }
 
     handleSelectTasks = () => {
@@ -107,14 +118,27 @@ class ToDo extends Component {
 
     handleReceivedEditTask = (editedTask) => {
 
-        let tasks = [...this.state.tasks];
-
-        const idx = tasks.findIndex((task) => editedTask._id === task._id);
-        tasks[idx] = editedTask;
-
-        this.setState({
-            tasks
+        fetch(`http://localhost:3001/task/${editedTask._id}`, {
+            method: "PUT",
+            body: JSON.stringify(editedTask),
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) throw data.error;
+
+                let tasks = [...this.state.tasks];
+                const idx = tasks.findIndex((task) => editedTask._id === task._id);
+                tasks[idx] = editedTask;
+
+                this.setState({
+                    tasks
+                })
+            })
+            .catch(err => console.error("Edit Task Request Error::", err));
+
     }
 
     handleToggleEditModal = (task) => {
@@ -127,6 +151,19 @@ class ToDo extends Component {
         this.setState({
             isAdd: !this.state.isAdd
         })
+    }
+
+    componentDidMount() {
+
+        fetch("http://localhost:3001/task")
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) throw data.error;
+                this.setState({
+                    tasks: data
+                });
+            })
+            .catch(error => console.error(error));
     }
 
     render() {
@@ -205,7 +242,7 @@ class ToDo extends Component {
                 }
 
                 {
-                    (isAdd || editableTask) && <AddEditModal
+                    (isAdd || editableTask) && <ActionsModal
                         editableTask={editableTask}
                         onHide={isAdd ? this.handleToggleAddModal : this.handleToggleEditModal}
                         onSubmit={isAdd ? this.handleAdd : this.handleReceivedEditTask}
