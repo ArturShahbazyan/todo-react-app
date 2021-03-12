@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Task from '../Task/Task';
+import Task from '../../Task/Task';
 import {Row, Container, Col, Button} from 'react-bootstrap';
-import Confirm from '../Modals/Confirm/Confirm';
-import ActionsModal from "../Modals/ActionsModal/ActionsModal";
-import dateFormatter from '../../helpers/date';
+import Confirm from '../../Modals/Confirm/Confirm';
+import ActionsModal from "../../Modals/ActionsModal/ActionsModal";
+import dateFormatter from '../../../helpers/date';
 
 class ToDo extends Component {
 
@@ -138,7 +138,6 @@ class ToDo extends Component {
                 })
             })
             .catch(err => console.error("Edit Task Request Error::", err));
-
     }
 
     handleToggleEditModal = (task) => {

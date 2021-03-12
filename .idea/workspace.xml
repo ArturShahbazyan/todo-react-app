@@ -2,15 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/helpers/date.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Navbar/Navbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Navbar/navbar.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/pages/About/About.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/pages/About/about.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/pages/Contact/Contact.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/pages/Contact/contact.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Modals/AddEditModal/AddEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/task.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/task.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ToDo/todo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/todo.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
@@ -66,12 +72,27 @@
       <recent name="$PROJECT_DIR$/src/Components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Components/pages" />
       <recent name="$PROJECT_DIR$/src/Components/Modals" />
       <recent name="$PROJECT_DIR$/src/Components" />
       <recent name="$PROJECT_DIR$/src/Components/ToDo" />
       <recent name="$PROJECT_DIR$/src/Components/AddTask" />
-      <recent name="$PROJECT_DIR$/src/Components/Task" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -122,7 +143,8 @@
       <workItem from="1615373965037" duration="7758000" />
       <workItem from="1615385955577" duration="5182000" />
       <workItem from="1615408231594" duration="8311000" />
-      <workItem from="1615455632238" duration="10197000" />
+      <workItem from="1615455632238" duration="21036000" />
+      <workItem from="1615538271794" duration="10758000" />
     </task>
     <servers />
   </component>
@@ -146,7 +168,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.js</url>
-          <line>1</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

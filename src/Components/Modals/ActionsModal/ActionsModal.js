@@ -11,9 +11,8 @@ class ActionsModal extends React.Component {
         this.state = {
             title: '',
             description: '',
-            _id: '',
-            date: new Date(),
             ...props.editableTask,
+            date: props.editableTask ? new Date(props.editableTask.date) : new Date()
         }
 
         this.addTaskInput = React.createRef();
@@ -31,10 +30,10 @@ class ActionsModal extends React.Component {
         if (type === 'keypress' && key !== 'Enter') return;
 
         const {onSubmit, onHide, editableTask} = this.props;
-        const taskData = {...this.state};
+        const taskData = { ...this.state };
         taskData.date = dateFormatter(taskData.date);
 
-        editableTask ? onSubmit(this.state) : onSubmit(taskData);
+        editableTask ? onSubmit(taskData) : onSubmit({...this.state});
         onHide();
     }
 
@@ -81,7 +80,7 @@ class ActionsModal extends React.Component {
                         onKeyPress={this.handleSend}
                     />
                     <DatePicker
-                        selected={new Date(date)}
+                        selected={date}
                         onChange={date => this.handleSetDate(date)}
                         className="form-control"
                     />
