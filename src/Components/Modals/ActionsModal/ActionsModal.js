@@ -34,7 +34,7 @@ class ActionsModal extends React.Component {
         const taskData = {...this.state};
         taskData.date = dateFormatter(taskData.date);
 
-        editableTask ? onSubmit(this.state) : onSubmit(taskData);
+        editableTask ? onSubmit(taskData) : onSubmit({...this.state});
         onHide();
     }
 
