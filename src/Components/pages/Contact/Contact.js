@@ -1,5 +1,3 @@
-import  React from 'react-dom';
-
 const Contact = () => {
     return(
         <div className="d-flex justify-content-center">
