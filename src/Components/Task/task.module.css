@@ -22,3 +22,11 @@
 .checked {
     opacity:0.8;
 }
+
+.singleTaskLink:hover {
+    color: #61dafb;
+}
+
+.singleTaskLink {
+    color: #61dafb;
+}

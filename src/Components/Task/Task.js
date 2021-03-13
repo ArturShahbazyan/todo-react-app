@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 import dateFormatter from '../../helpers/date'
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
 const Task = (props) => {
 
@@ -32,9 +33,18 @@ const Task = (props) => {
                         checked={checked}
             />
             <Card.Body className="d-flex flex-column">
-                <Card.Title>{task.title}</Card.Title>
-                <Card.Text>{task.description}</Card.Text>
-                <Card.Text className="mt-auto">Created: {dateFormatter(task.date)}</Card.Text>
+                <Card.Title>
+                    <Link className={s.singleTaskLink}  to={`/task/${task._id}`}>
+                        {task.title}
+                    </Link>
+
+                </Card.Title>
+                <Card.Text>
+                    {task.description}
+                </Card.Text>
+                <Card.Text className="mt-auto">
+                    Created: {dateFormatter(task.date)}
+                </Card.Text>
                 <div className="mt-2">
                     <Button variant="outline-danger"
                             className="mr-3"

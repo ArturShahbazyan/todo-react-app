@@ -12,14 +12,17 @@
 }
 
 .custom_nav a:hover {
-    color: #17a2b8;
+    color: #61dafb;
     text-decoration:none;
 }
 
 .activeNavLink {
-    color: #17a2b8;
+    color: #61dafb;
 }
 
-a {
-    color:#221645;
+.pageLink:not([aria-current="page"]){
+    color: #282c34;
 }
+
+
+
