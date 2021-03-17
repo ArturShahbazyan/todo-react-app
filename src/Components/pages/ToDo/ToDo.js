@@ -4,6 +4,7 @@ import {Row, Container, Col, Button} from 'react-bootstrap';
 import Confirm from '../../Modals/Confirm/Confirm';
 import ActionsModal from "../../Modals/ActionsModal/ActionsModal";
 import dateFormatter from '../../../helpers/date';
+import Preloader from "../../Preloader/Preloader";
 
 class ToDo extends Component {
 
@@ -12,7 +13,14 @@ class ToDo extends Component {
         checkedTasks: new Set(),
         isConfirmModalOpen: false,
         editableTask: null,
-        isAdd: false
+        isAdd: false,
+        isLoading: false
+    }
+
+    loading = (isLoad) => {
+        this.setState({
+            isLoading: !isLoad
+        });
     }
 
     handleAdd = (taskData) => {
@@ -20,6 +28,8 @@ class ToDo extends Component {
 
         taskData.date = dateFormatter(taskData.date);
         const tasks = [...this.state.tasks];
+
+        this.loading(this.state.isLoading);
 
         fetch("http://localhost:3001/task", {
             method: "POST",
@@ -36,10 +46,15 @@ class ToDo extends Component {
                     tasks
                 });
             })
-            .catch(err => console.error("Create Task Request Error::", err));
+            .catch(err => console.error("Create Task Request Error::", err))
+            .finally(() => {
+                this.loading(this.state.isLoading);
+            });
     }
 
     handleDelete = (task_id) => {
+
+        this.loading(this.state.isLoading);
 
         fetch(`http://localhost:3001/task/${task_id}`, {
             method: "DELETE"
@@ -53,7 +68,10 @@ class ToDo extends Component {
                     tasks
                 });
             })
-            .catch(err => console.error("Delete Task Request Error::", err));
+            .catch(err => console.error("Delete Task Request Error::", err))
+            .finally(() => {
+                this.loading(this.state.isLoading);
+            });
 
     }
 
@@ -70,6 +88,8 @@ class ToDo extends Component {
     }
 
     handleRemoveSelectedTasks = () => {
+
+        this.loading(this.state.isLoading)
 
         fetch("http://localhost:3001/task", {
             method: "PATCH",
@@ -91,6 +111,9 @@ class ToDo extends Component {
                 })
             })
             .catch(err => console.error("Delete Tasks Request Error::", err))
+            .finally(() => {
+                this.loading(this.state.isLoading);
+            });
     }
 
     handleSelectTasks = () => {
@@ -118,6 +141,8 @@ class ToDo extends Component {
 
     handleReceivedEditTask = (editedTask) => {
 
+        this.loading(this.state.isLoading);
+
         fetch(`http://localhost:3001/task/${editedTask._id}`, {
             method: "PUT",
             body: JSON.stringify(editedTask),
@@ -137,7 +162,10 @@ class ToDo extends Component {
                     tasks
                 })
             })
-            .catch(err => console.error("Edit Task Request Error::", err));
+            .catch(err => console.error("Edit Task Request Error::", err))
+            .finally(() => {
+                this.loading(this.state.isLoading);
+            });
     }
 
     handleToggleEditModal = (task) => {
@@ -154,6 +182,8 @@ class ToDo extends Component {
 
     componentDidMount() {
 
+        this.loading(this.state.isLoading);
+
         fetch("http://localhost:3001/task")
             .then(res => res.json())
             .then(data => {
@@ -162,7 +192,10 @@ class ToDo extends Component {
                     tasks: data
                 });
             })
-            .catch(error => console.error(error));
+            .catch(error => console.error(error))
+            .finally(() => {
+                this.loading(this.state.isLoading);
+            });
     }
 
     render() {
@@ -172,8 +205,11 @@ class ToDo extends Component {
             tasks,
             isConfirmModalOpen,
             editableTask,
-            isAdd
+            isAdd,
+            isLoading
         } = this.state;
+
+        if (isLoading) return <Preloader/>;
 
         const Tasks = tasks.map((task) => {
             return (

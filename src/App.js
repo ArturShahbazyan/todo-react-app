@@ -9,20 +9,34 @@ import NotFound from "./Components/pages/NotFound/NotFound";
 import SingleTask from "./Components/pages/SingleTask/SingleTask";
 
 
+const pages = [
+    {path:"/", component:ToDo},
+    {path:"/contact", component:Contact},
+    {path:"/about", component:About},
+    {path:"/task/:id", component:SingleTask},
+    {path:"/404", component:NotFound},
+];
+
 class App extends Component {
 
     render() {
+
+        const pageRoutes = pages.map((page,index)=> {
+            return <Route
+                path={page.path}
+                component={page.component}
+                exact
+                key={index}
+            />
+        })
+
         return (
             <div className="App">
                 <Navbar/>
                 <div className="app-content-wrapper">
                 </div>
                 <Switch>
-                    <Route path="/" exact component={ToDo}/>
-                    <Route  path="/contact" exact component={Contact}/>
-                    <Route path="/about" exact component={About}/>
-                    <Route path="/task/:id" exact component={SingleTask}/>
-                    <Route path="/404" exact component={NotFound}/>
+                    {pageRoutes}
                     <Redirect to="/404"/>
                 </Switch>
             </div>
