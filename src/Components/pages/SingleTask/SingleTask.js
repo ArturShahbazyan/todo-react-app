@@ -3,14 +3,12 @@ import {Button, Card} from "react-bootstrap";
 import s from "./singletask.module.css"
 import dateFormatter from "../../../helpers/date";
 import PropTypes from "prop-types";
-import {Redirect} from "react-router-dom";
 import ActionsModal from "../../Modals/ActionsModal/ActionsModal";
 import Preloader from "../../Preloader/Preloader";
 
 class SingleTask extends React.Component {
     state = {
         singleTask: null,
-        hasError: false,
         isEditTask: false,
         isLoading: false
     }
@@ -31,18 +29,16 @@ class SingleTask extends React.Component {
             .then(res => res.json())
             .then(data => {
                 if (data.error) throw data.error;
-                this.setState({
-                    singleTask: data
-                })
-            }).catch(err => {
-            this.setState({
-                hasError: true
-            })
-            console.error("Single Task Response Error::", err);
-        })
-            .finally(() => {
                 this.loading(this.state.isLoading);
-            });
+                this.setState({
+                    singleTask: data,
+                })
+            })
+            .catch(err => {
+                this.loading(this.state.isLoading);
+                this.props.history.push("/404");
+                console.error("Single Task Response Error::", err);
+            })
     }
 
     handleGoBack = () => {
@@ -100,11 +96,7 @@ class SingleTask extends React.Component {
 
     render() {
 
-        const {singleTask, isEditTask, hasError, isLoading} = this.state;
-
-        if (hasError) {
-            return <Redirect to="/404"/>
-        }
+        const {singleTask, isEditTask, isLoading} = this.state;
 
         if (!singleTask || isLoading) return <Preloader/>;
 

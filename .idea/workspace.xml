@@ -2,30 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/Preloader/Preloader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Preloader/preloader.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Navbar/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Navbar/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Navbar/navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Navbar/navbar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/task.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/task.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/About/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/About/About.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/About/about.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/About/about.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/Contact/Contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/Contact/Contact.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/Contact/contact.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/Contact/contact.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/NotFound/NotFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/NotFound/NotFound.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/NotFound/notfound.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/NotFound/notfound.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/SingleTask/singletask.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/SingleTask/singletask.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/ToDo/todo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/todo.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/404.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/404.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/date.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/date.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/idGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/idGenerator.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +139,11 @@
       <workItem from="1615929494525" duration="2914000" />
       <workItem from="1615934653066" duration="3661000" />
       <workItem from="1615973903235" duration="1105000" />
-      <workItem from="1615975470109" duration="6419000" />
+      <workItem from="1615975470109" duration="8359000" />
+      <workItem from="1616076640210" duration="549000" />
+      <workItem from="1616077634411" duration="405000" />
+      <workItem from="1616078506504" duration="223000" />
+      <workItem from="1616079397472" duration="2516000" />
     </task>
     <servers />
   </component>
