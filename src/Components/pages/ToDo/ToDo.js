@@ -42,6 +42,7 @@ class ToDo extends Component {
             .then(data => {
                 if (data.error) throw data.error;
                 tasks.push(data);
+                this.state.isAdd && this.handleToggleAddModal()
                 this.setState({
                     tasks
                 });
@@ -158,6 +159,7 @@ class ToDo extends Component {
                 const idx = tasks.findIndex((task) => editedTask._id === task._id);
                 tasks[idx] = editedTask;
 
+                this.state.editableTask && this.handleToggleEditModal();
                 this.setState({
                     tasks
                 })
@@ -208,8 +210,6 @@ class ToDo extends Component {
             isAdd,
             isLoading
         } = this.state;
-
-        if (isLoading) return <Preloader/>;
 
         const Tasks = tasks.map((task) => {
             return (
@@ -282,6 +282,10 @@ class ToDo extends Component {
                         onHide={isAdd ? this.handleToggleAddModal : this.handleToggleEditModal}
                         onSubmit={isAdd ? this.handleAdd : this.handleReceivedEditTask}
                     />
+                }
+
+                {
+                    isLoading && <Preloader/>
                 }
             </>
         )

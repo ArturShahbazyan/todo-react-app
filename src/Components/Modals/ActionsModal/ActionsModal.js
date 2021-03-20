@@ -29,12 +29,11 @@ class ActionsModal extends React.Component {
 
         if (type === 'keypress' && key !== 'Enter') return;
 
-        const {onSubmit, onHide, editableTask} = this.props;
+        const {onSubmit, editableTask} = this.props;
         const taskData = { ...this.state };
         taskData.date = dateFormatter(taskData.date);
 
         editableTask ? onSubmit(taskData) : onSubmit({...this.state});
-        onHide();
     }
 
     handleSetDate = (date) => {

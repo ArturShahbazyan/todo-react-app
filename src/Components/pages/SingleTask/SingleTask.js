@@ -35,7 +35,6 @@ class SingleTask extends React.Component {
                 })
             })
             .catch(err => {
-                this.loading(this.state.isLoading);
                 this.props.history.push("/404");
                 console.error("Single Task Response Error::", err);
             })
@@ -85,7 +84,8 @@ class SingleTask extends React.Component {
             .then(data => {
                 if (data.error) throw data.error;
                 this.setState({
-                    singleTask: data
+                    singleTask: data,
+                    isEditTask: false
                 })
             })
             .catch(err => console.error("Single Task Response Error::", err))
@@ -98,7 +98,7 @@ class SingleTask extends React.Component {
 
         const {singleTask, isEditTask, isLoading} = this.state;
 
-        if (!singleTask || isLoading) return <Preloader/>;
+        if (!singleTask) return <Preloader/>;
 
 
         return (
@@ -117,25 +117,26 @@ class SingleTask extends React.Component {
                         <Card.Text>
                             Created: {dateFormatter(singleTask.created_at)}
                         </Card.Text>
-                        <div className="mt-5">
-                            <Button
-                                variant="outline-secondary"
-                                className="mr-3"
-                                onClick={this.handleGoBack}>
-                                Go Back
-                            </Button>
-                            <Button variant="outline-danger"
-                                    className="mr-3"
-                                    onClick={this.handleDeleteSingleTask}
-                            >
-                                Delete
-                            </Button>
-                            <Button
-                                variant="outline-info"
-                                onClick={this.handleToggleEditTask}
-                            >
-                                Edit
-                            </Button>
+                        <div className="mt-5 d-flex flex-column flex-lg-row justify-content-center">
+                                <Button
+                                    variant="outline-secondary"
+                                    className="mr-xl-3 mr-lg-3"
+                                    onClick={this.handleGoBack}>
+                                    Go Back
+                                </Button>
+                                <Button variant="outline-danger "
+                                        className="mr-xl-3 mr-lg-3 mt-3 mt-lg-0"
+                                        onClick={this.handleDeleteSingleTask}
+                                >
+                                    Delete
+                                </Button>
+                                <Button
+                                    className="mt-3 mt-lg-0"
+                                    variant="outline-info"
+                                    onClick={this.handleToggleEditTask}
+                                >
+                                    Edit
+                                </Button>
                         </div>
                     </Card.Body>
                 </Card>
@@ -146,6 +147,9 @@ class SingleTask extends React.Component {
                         onHide={this.handleToggleEditTask}
                         onSubmit={this.handleReceivedEditTask}
                     />
+                }
+                {
+                    isLoading && <Preloader/>
                 }
             </>
         )
