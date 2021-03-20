@@ -2,9 +2,10 @@ import React from 'react'
 import {Button, Form} from "react-bootstrap";
 import s from "./contactform.module.css";
 import Preloader from "../Preloader/Preloader";
+import {isRequired, maxLength, minLength, validEmail} from "../../helpers/validators";
 
 
-const contactsList = [
+const inputList = [
     {
         name: "name",
         labelId: "formBasicName",
@@ -33,32 +34,77 @@ class ContactForm extends React.Component {
         super(props);
         this.inputRef = React.createRef();
         this.state = {
-            name: "",
-            email: "",
-            message: "",
+            name: {
+                value: "",
+                valid: false,
+                error: null
+            },
+            email: {
+                value: "",
+                valid: false,
+                error: null
+            },
+            message: {
+                value: "",
+                valid: false,
+                error: null
+            },
             isLoading: false,
+            errorMessage:"",
+            success:false
         }
     }
+
 
     handleChange = (e) => {
 
         const {name, value} = e.target;
 
+        let error = null;
+
+        const maxLength30 = maxLength(30);
+        const minLength3 = minLength(3);
+
+        switch (name) {
+            case "name" :
+            case "email" :
+            case "message" :
+                error = isRequired(value)
+                    || maxLength30(value)
+                    || minLength3(value)
+                    || (name === "email" && validEmail(value));
+                break;
+            default :
+        }
+
         this.setState({
-            [name]: value
+            [name]: {
+                value,
+                valid: !!!error,
+                error
+            }
         })
+
     }
 
     handleSubmit = () => {
 
-        this.setState({isLoading: true});
+        const formData = {...this.state};
+        delete formData.isLoading;
+        delete formData.errorMessage;
+        delete formData.success;
 
-        const {name, email, message} = this.state;
-        const {onSuccess} = this.props;
+        for(let key in formData){
+            if (formData.hasOwnProperty(key)){
+                formData[key] = formData[key].value;
+            }
+        }
+
+        this.setState({isLoading: true});
 
         fetch('http://localhost:3001/form', {
             method: "POST",
-            body: JSON.stringify({name, email, message}),
+            body: JSON.stringify(formData),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -67,15 +113,24 @@ class ContactForm extends React.Component {
             .then(data => {
                 if (data.error) throw data.error;
                 this.setState({
-                    name: "",
-                    email: "",
-                    message: "",
-                    isLoading: false
+                    name: {
+                        value:""
+                    },
+                    email: {
+                        value:""
+                    },
+                    message: {
+                        value:""
+                    },
+                    isLoading: false,
+                    success:data.success
                 });
-                onSuccess(data.success);
             })
             .catch(err => {
-                this.setState({isLoading: false});
+                this.setState({
+                    isLoading: false,
+                    errorMessage:err.message
+                });
                 console.error("Contact Submit Request Error", err);
             });
 
@@ -87,28 +142,34 @@ class ContactForm extends React.Component {
 
     render() {
 
-        const {isLoading} = this.state;
+        const {name, email, message, errorMessage} = this.state;
+        const isValid = name.valid && email.valid && message.valid;
 
-        const contact = contactsList.map((contact, index) => {
+        const {isLoading, success} = this.state;
+
+        const inputs = inputList.map((input, index) => {
             return (
                 <Form.Group
-                    controlId={contact.name}
+                    controlId={input.name}
                     key={index}
                 >
                     <Form.Label>
-                        {contact.label}
+                        {input.label}
                     </Form.Label>
                     <Form.Control
-                        name={contact.name}
-                        type={contact.type}
-                        placeholder={contact.label}
-                        as={contact.as}
-                        rows={contact.rows}
-                        maxLength={contact.maxLength}
+                        name={input.name}
+                        type={input.type}
+                        placeholder={input.label}
+                        as={input.as}
+                        rows={input.rows}
+                        maxLength={input.maxLength}
                         ref={!index ? this.inputRef : null}
                         onChange={this.handleChange}
-                        value={this.state[contact.name]}
+                        value={this.state[input.name].value}
                     />
+                    <Form.Text className="text-danger">
+                        {this.state[input.name].error}
+                    </Form.Text>
                 </Form.Group>
             )
         })
@@ -116,13 +177,21 @@ class ContactForm extends React.Component {
         return (
             <>
                 <Form className={s.contact}>
-                    {contact}
-                    <Button variant="info" className={s.btn} onClick={this.handleSubmit}>
+                    <h5 className={`text-center ${success ? 'text-success' : 'text-danger'}`}>
+                        {success ? "Data send Successfully" : errorMessage}
+                    </h5>
+                    {inputs}
+                    <Button
+                        variant="info"
+                        className={s.btn}
+                        onClick={this.handleSubmit}
+                        disabled={!isValid}
+                    >
                         Submit
                     </Button>
                 </Form>
                 {
-                    isLoading && <Preloader />
+                    isLoading && <Preloader/>
                 }
             </>
         )

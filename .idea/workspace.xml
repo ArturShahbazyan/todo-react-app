@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/ContactForm/ContactForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/ContactForm/contactform.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helpers/validators.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Preloader/Preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Preloader/Preloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Preloader/preloader.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Preloader/preloader.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ContactForm/ContactForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ContactForm/ContactForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/pages/Contact/Contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/Contact/Contact.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -71,19 +66,6 @@
       <recent name="$PROJECT_DIR$/src/Components/Modals" />
       <recent name="$PROJECT_DIR$/src/Components/ToDo" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -169,7 +151,8 @@
       <workItem from="1616096532364" duration="12079000" />
       <workItem from="1616157190676" duration="11739000" />
       <workItem from="1616186810497" duration="5648000" />
-      <workItem from="1616232572209" duration="4462000" />
+      <workItem from="1616232572209" duration="22241000" />
+      <workItem from="1616269443184" duration="5207000" />
     </task>
     <servers />
   </component>
