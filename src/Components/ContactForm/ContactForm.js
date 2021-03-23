@@ -129,7 +129,8 @@ class ContactForm extends React.Component {
             .catch(err => {
                 this.setState({
                     isLoading: false,
-                    errorMessage:err.message
+                    errorMessage:err.message,
+                    success:false
                 });
                 console.error("Contact Submit Request Error", err);
             });

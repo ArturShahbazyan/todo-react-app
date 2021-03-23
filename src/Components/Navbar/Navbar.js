@@ -4,8 +4,8 @@ import s from "../Navbar/navbar.module.css"
 
 const NavbarItems = [
     {to: "/", value: "Home"},
-    {to: "contact", value: "Contact"},
-    {to: "about", value: "About"}
+    {to: "/contact", value: "Contact"},
+    {to: "/about", value: "About"}
 ]
 
 const Navbar = () => {

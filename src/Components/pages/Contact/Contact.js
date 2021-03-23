@@ -1,5 +1,6 @@
 import React from 'react';
-import ContactForm from '../../ContactForm/ContactForm';
+/*import ContactForm from '../../ContactForm/ContactForm';*/
+import ContactFormWithHooks from "../../ContactForm/ContactFormWithHooks";
 
 class Contact extends React.Component {
 
@@ -7,7 +8,8 @@ class Contact extends React.Component {
         return (
             <div>
                 <h2 className="text-center mb-4">Contact Page</h2>
-                <ContactForm />
+                {/*<ContactForm />*/}
+                <ContactFormWithHooks />
             </div>
         )
     }
