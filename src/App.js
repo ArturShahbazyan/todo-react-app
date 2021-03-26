@@ -38,7 +38,6 @@ class App extends Component {
                     }
                     }
                 />
-
             }
 
             return <Route
