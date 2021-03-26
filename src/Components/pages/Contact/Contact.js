@@ -1,13 +1,15 @@
-import {useContext} from 'react';
 import ContactFormWithHooks from "../../ContactForm/ContactFormWithHooks";
+import ContactContextProvider from "../../../Context/ContactContextProvider";
 
 const Contact = () => {
-        return (
+    return (
+        <ContactContextProvider>
             <div>
                 <h2 className="text-center mb-4">Contact Page</h2>
-                <ContactFormWithHooks />
+                <ContactFormWithHooks/>
             </div>
-        )
+        </ContactContextProvider>
+    )
 }
 
 export default Contact;
