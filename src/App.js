@@ -6,14 +6,14 @@ import ToDo from "./Components/pages/ToDo/ToDo";
 import About from "./Components/pages/About/About";
 import Contact from "./Components/pages/Contact/Contact";
 import NotFound from "./Components/pages/NotFound/NotFound";
-import SingleTask from "./Components/pages/SingleTask/SingleTask";
 import ContactContextProvider from "./Context/ContactContextProvider";
+import SingleTaskWithReducer from "./Components/pages/SingleTask/SingleTaskWithReducer";
 
 const pages = [
     {path: "/", component: ToDo},
     {path: "/contact", component: Contact, contextProvider: ContactContextProvider},
     {path: "/about", component: About},
-    {path: "/task/:id", component: SingleTask},
+    {path: "/task/:id", component: SingleTaskWithReducer},
     {path: "/404", component: NotFound},
 ];
 
