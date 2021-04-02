@@ -1,0 +1,32 @@
+.card {
+    margin: 15px;
+    padding: 5px 11px 5px;
+    color: #ffffff;
+    background-color: #282c34;
+    box-shadow: 0 3px 18px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 18rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    width: 20%;
+}
+
+.checkbox {
+    position: absolute;
+    right: 13px;
+}
+
+.checked {
+    opacity:0.8;
+}
+
+.singleTaskLink:hover {
+    color: #61dafb;
+}
+
+.singleTaskLink {
+    color: #61dafb;
+}
