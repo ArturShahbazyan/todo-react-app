@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ContactForm/ContactFormWithHooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ContactForm/ContactFormWithHooks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Counter/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Counter/Counter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/InputResult/InputResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/InputResult/InputResult.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Context/ContactContextProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Context/ContactContextProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,7 +168,7 @@
       <workItem from="1617899236782" duration="618000" />
       <workItem from="1617900354586" duration="10768000" />
       <workItem from="1617959372382" duration="697000" />
-      <workItem from="1617960085849" duration="12309000" />
+      <workItem from="1617960085849" duration="14299000" />
     </task>
     <servers />
   </component>

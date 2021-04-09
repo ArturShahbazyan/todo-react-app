@@ -216,14 +216,6 @@ const reducer = (state = initialState, action) => {
                     errorMessage: action.errorMessage
                 }
             }
-        case actionTypes.SET_FORM_DATA:
-            return {
-                ...state,
-                contactState: {
-                    ...state.contactState,
-                        formData: action.formData
-                    }
-            }
 
         case actionTypes.SET_CHANGES:
 
