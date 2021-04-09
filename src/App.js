@@ -10,11 +10,11 @@ import ContactContextProvider from "./Context/ContactContextProvider";
 import SingleTaskWithReducer from "./Components/pages/SingleTask/SingleTaskWithReducer";
 
 const pages = [
-    {path: "/", component: ToDo},
-    {path: "/contact", component: Contact, contextProvider: ContactContextProvider},
-    {path: "/about", component: About},
-    {path: "/task/:id", component: SingleTaskWithReducer},
-    {path: "/404", component: NotFound},
+    {path: "/", Component: ToDo},
+    {path: "/contact", Component: Contact, ContextProvider: ContactContextProvider},
+    {path: "/about", Component: About},
+    {path: "/task/:id", Component: SingleTaskWithReducer},
+    {path: "/404", Component: NotFound},
 ];
 
 class App extends Component {
@@ -22,31 +22,24 @@ class App extends Component {
     render() {
 
         const pageRoutes = pages.map((page, index) => {
-            if (page.path === '/contact') {
+                const {ContextProvider, Component} = page;
                 return <Route
                     path={page.path}
                     exact
                     key={index}
                     render={(props) => {
-                        return <>
-                            {
-                                <page.contextProvider>
-                                    <page.component {...props}/>
-                                </page.contextProvider>
-                            }
-                        </>
+                        return (
+                            ContextProvider ?
+                                <ContextProvider>
+                                    <Component {...props}/>
+                                </ContextProvider> :
+                                <Component {...props}/>
+                        )
                     }
                     }
                 />
             }
-
-            return <Route
-                path={page.path}
-                component={page.component}
-                exact
-                key={index}
-            />
-        })
+        )
 
         return (
             <div className="App">

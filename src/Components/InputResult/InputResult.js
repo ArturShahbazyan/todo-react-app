@@ -1,6 +1,7 @@
 import {Button, Form} from "react-bootstrap";
 import React from "react";
 import {connect} from "react-redux";
+import actionTypes from "../../redux/actionTypes";
 
 const InputResult = ({setText, text, resetInput}) => {
     return (
@@ -29,14 +30,14 @@ const InputResult = ({setText, text, resetInput}) => {
 
 const mapStateToProps = (state) => {
     return {
-        text:state.text
+        text: state.text
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setText:(text) => dispatch({type:"setText", text}),
-        resetInput:() => dispatch({type:"resetInput"}),
+        setText: (text) => dispatch({type: actionTypes.SET_TEXT, text}),
+        resetInput: () => dispatch({type: actionTypes.RESET_INPUT}),
     }
 }
 

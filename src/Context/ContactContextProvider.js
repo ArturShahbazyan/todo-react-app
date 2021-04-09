@@ -25,7 +25,7 @@ const ContactContextProvider = (props) => {
                 touched: false,
                 valid: false,
                 error: null
-            },
+            }
         }
     );
 

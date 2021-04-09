@@ -15,13 +15,10 @@ const Task = (props) => {
         checked,
         disabled,
         handleDelete,
-        handleCheckedTasks,
-        handleToggleEditModal
+        toggleCheckedTask,
+        toggleEditModal
     } = props;
 
-    const handleOpenAndEdit = () => {
-        handleToggleEditModal(task);
-    }
 
     return (
 
@@ -29,7 +26,7 @@ const Task = (props) => {
             <Card.Img variant="top" src={logo} alt="logo" className={s.logo}/>
             <Form.Check type="checkbox"
                         className={s.checkbox}
-                        onChange={() => handleCheckedTasks(task._id)}
+                        onChange={() => toggleCheckedTask(task._id)}
                         checked={checked}
             />
             <Card.Body className="d-flex flex-column">
@@ -53,7 +50,7 @@ const Task = (props) => {
                     >
                         <FontAwesomeIcon icon={faTrash}/></Button>
                     <Button variant="outline-info"
-                            onClick={handleOpenAndEdit}
+                            onClick={() => toggleEditModal(task)}
                             disabled={disabled}
                     >
                         <FontAwesomeIcon icon={faEdit}/>
@@ -73,8 +70,8 @@ Task.propTypes = {
     checked: PropTypes.bool.isRequired,
     disabled: PropTypes.bool.isRequired,
     handleDelete: PropTypes.func.isRequired,
-    handleCheckedTasks: PropTypes.func.isRequired,
-    handleToggleEditModal: PropTypes.func.isRequired,
+    toggleCheckedTask: PropTypes.func.isRequired,
+    toggleEditModal: PropTypes.func.isRequired,
 }
 
 export default memo(Task);

@@ -5,31 +5,20 @@ import Confirm from '../../Modals/Confirm/Confirm';
 import ActionsModal from "../../Modals/ActionsModal/ActionsModal";
 import dateFormatter from '../../../helpers/date';
 import Preloader from "../../Preloader/Preloader";
+import {connect} from "react-redux";
+import actionTypes from "../../../redux/actionTypes";
+
 
 class ToDo extends Component {
-
-    state = {
-        tasks: [],
-        checkedTasks: new Set(),
-        isConfirmModalOpen: false,
-        editableTask: null,
-        isAdd: false,
-        isLoading: false
-    }
-
-    loading = (isLoad) => {
-        this.setState({
-            isLoading: !isLoad
-        });
-    }
 
     handleAdd = (taskData) => {
         if (!taskData.title || !taskData.description) return;
 
-        taskData.date = dateFormatter(taskData.date);
-        const tasks = [...this.state.tasks];
+        const {loading, toggleAddModal, isAdd, addTask} = this.props;
 
-        this.loading(this.state.isLoading);
+        taskData.date = dateFormatter(taskData.date);
+
+        loading(true);
 
         fetch("http://localhost:3001/task", {
             method: "POST",
@@ -41,21 +30,20 @@ class ToDo extends Component {
             .then(resp => resp.json())
             .then(data => {
                 if (data.error) throw data.error;
-                tasks.push(data);
-                this.state.isAdd && this.handleToggleAddModal()
-                this.setState({
-                    tasks
-                });
+                addTask(data);
+                isAdd && toggleAddModal();
             })
             .catch(err => console.error("Create Task Request Error::", err))
             .finally(() => {
-                this.loading(this.state.isLoading);
+                loading(false);
             });
     }
 
     handleDelete = (task_id) => {
 
-        this.loading(this.state.isLoading);
+        const {loading, deleteSingleTask} = this.props;
+
+        loading(true);
 
         fetch(`http://localhost:3001/task/${task_id}`, {
             method: "DELETE"
@@ -63,38 +51,24 @@ class ToDo extends Component {
             .then(res => res.json())
             .then(data => {
                 if (data.error) throw data.error;
-                let tasks = [...this.state.tasks];
-                tasks = tasks.filter((task) => task_id !== task._id)
-                this.setState({
-                    tasks
-                });
+                deleteSingleTask(task_id);
             })
             .catch(err => console.error("Delete Task Request Error::", err))
             .finally(() => {
-                this.loading(this.state.isLoading);
+                loading(false);
             });
 
     }
 
-    handleCheckedTasks = (task_id) => {
-
-        let checkedTasks = this.state.checkedTasks;
-        checkedTasks = new Set(checkedTasks);
-
-        checkedTasks.has(task_id) ? checkedTasks.delete(task_id) : checkedTasks.add(task_id);
-
-        this.setState({
-            checkedTasks
-        })
-    }
-
     handleRemoveSelectedTasks = () => {
 
-        this.loading(this.state.isLoading)
+        const {loading, checkedTasks, removeSelectedTasks} = this.props;
+
+        loading(true);
 
         fetch("http://localhost:3001/task", {
             method: "PATCH",
-            body: JSON.stringify({tasks: Array.from(this.state.checkedTasks)}),
+            body: JSON.stringify({tasks: Array.from(checkedTasks)}),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -102,47 +76,21 @@ class ToDo extends Component {
             .then(response => response.json())
             .then(data => {
                 if (data.error) throw data.error;
-                const {checkedTasks} = this.state;
-                let tasks = [...this.state.tasks];
-                tasks = tasks.filter((task) => !checkedTasks.has(task._id));
+                removeSelectedTasks(checkedTasks);
 
-                this.setState({
-                    tasks,
-                    checkedTasks: new Set()
-                })
             })
             .catch(err => console.error("Delete Tasks Request Error::", err))
             .finally(() => {
-                this.loading(this.state.isLoading);
+                loading(false);
             });
     }
 
-    handleSelectTasks = () => {
-
-        const tasks = this.state.tasks;
-        let checkedTasks = new Set(this.state.checkedTasks);
-
-        !checkedTasks.size ?
-            tasks.forEach((task) => {
-                checkedTasks.add(task._id);
-                this.setState({
-                    checkedTasks
-                })
-            }) :
-            this.setState({
-                checkedTasks: new Set()
-            })
-    }
-
-    handleToggleModal = () => {
-        this.setState({
-            isConfirmModalOpen: !this.state.isConfirmModalOpen
-        })
-    }
 
     handleReceivedEditTask = (editedTask) => {
 
-        this.loading(this.state.isLoading);
+        const {loading, editTask, editableTask, toggleEditModal} = this.props;
+
+        loading(true);
 
         fetch(`http://localhost:3001/task/${editedTask._id}`, {
             method: "PUT",
@@ -154,62 +102,49 @@ class ToDo extends Component {
             .then(res => res.json())
             .then(data => {
                 if (data.error) throw data.error;
-
-                let tasks = [...this.state.tasks];
-                const idx = tasks.findIndex((task) => editedTask._id === task._id);
-                tasks[idx] = editedTask;
-
-                this.state.editableTask && this.handleToggleEditModal();
-                this.setState({
-                    tasks
-                })
+                editTask(editedTask);
+                editableTask && toggleEditModal(null);
             })
             .catch(err => console.error("Edit Task Request Error::", err))
             .finally(() => {
-                this.loading(this.state.isLoading);
+                loading(false);
             });
     }
 
-    handleToggleEditModal = (task) => {
-        this.setState({
-            editableTask: !this.state.editableTask ? task : null
-        })
-    }
-
-    handleToggleAddModal = () => {
-        this.setState({
-            isAdd: !this.state.isAdd
-        })
-    }
 
     componentDidMount() {
 
-        this.loading(this.state.isLoading);
+        const {loading, setTasks} = this.props;
+
+        loading(true);
 
         fetch("http://localhost:3001/task")
             .then(res => res.json())
             .then(data => {
                 if (data.error) throw data.error;
-                this.setState({
-                    tasks: data
-                });
+                setTasks(data);
             })
             .catch(error => console.error(error))
             .finally(() => {
-                this.loading(this.state.isLoading);
+                loading(false);
             });
     }
 
     render() {
 
         const {
-            checkedTasks,
             tasks,
-            isConfirmModalOpen,
-            editableTask,
+            isLoad,
             isAdd,
-            isLoading
-        } = this.state;
+            isConfirmModalOpen,
+            checkedTasks,
+            editableTask,
+            toggleAddModal,
+            toggleCheckedTask,
+            toggleSelectTasks,
+            toggleConfirmModal,
+            toggleEditModal
+        } = this.props;
 
         const Tasks = tasks.map((task) => {
             return (
@@ -221,10 +156,10 @@ class ToDo extends Component {
                 >
                     <Task task={task}
                           handleDelete={this.handleDelete}
-                          handleCheckedTasks={this.handleCheckedTasks}
+                          toggleCheckedTask={toggleCheckedTask}
                           disabled={!!checkedTasks.size}
                           checked={checkedTasks.has(task._id)}
-                          handleToggleEditModal={this.handleToggleEditModal}
+                          toggleEditModal={toggleEditModal}
                     />
                 </Col>
             )
@@ -237,7 +172,7 @@ class ToDo extends Component {
                         <Col md={12} className="d-flex justify-content-center">
                             <Button
                                 variant="secondary"
-                                onClick={this.handleToggleAddModal}
+                                onClick={toggleAddModal}
                             >
                                 Add task
                             </Button>
@@ -251,7 +186,7 @@ class ToDo extends Component {
                         <Col className="d-flex justify-content-center">
                             <Button
                                 variant="danger"
-                                onClick={this.handleToggleModal}
+                                onClick={toggleConfirmModal}
                                 disabled={!!!checkedTasks.size}
                             >
                                 Remove Selected
@@ -259,7 +194,7 @@ class ToDo extends Component {
                             <Button
                                 variant="info"
                                 className="ml-3"
-                                onClick={this.handleSelectTasks}
+                                onClick={toggleSelectTasks}
                                 disabled={!tasks.length}
                             >
                                 {!checkedTasks.size ? "Select All" : "Unselect"}
@@ -269,7 +204,7 @@ class ToDo extends Component {
                 </Container>
                 {
                     isConfirmModalOpen && <Confirm
-                        onHide={this.handleToggleModal}
+                        onHide={toggleConfirmModal}
                         tasksCount={`Do you want to delete ${checkedTasks.size} tasks?`}
                         onDeleteTasks={this.handleRemoveSelectedTasks}
 
@@ -279,17 +214,58 @@ class ToDo extends Component {
                 {
                     (isAdd || editableTask) && <ActionsModal
                         editableTask={editableTask}
-                        onHide={isAdd ? this.handleToggleAddModal : this.handleToggleEditModal}
+                        onHide={isAdd ? toggleAddModal : toggleEditModal}
                         onSubmit={isAdd ? this.handleAdd : this.handleReceivedEditTask}
                     />
                 }
 
                 {
-                    isLoading && <Preloader/>
+                    isLoad && <Preloader/>
                 }
             </>
         )
     }
 }
 
-export default ToDo;
+const mapStateToProps = (state) => {
+
+    const {
+        tasks,
+        isAdd,
+        checkedTasks,
+        isConfirmModalOpen,
+        editableTask
+    } = state.todoState;
+
+    const {isLoad} = state;
+
+    return {
+        tasks,
+        isLoad,
+        isAdd,
+        checkedTasks,
+        isConfirmModalOpen,
+        editableTask
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setTasks: (data) => dispatch({type: actionTypes.SET_TASKS, data}),
+        loading: (isLoad) => dispatch({type: actionTypes.LOADING, isLoad}),
+        toggleAddModal: () => dispatch({type: actionTypes.TOGGLE_ADD_MODAL}),
+        addTask: (data) => dispatch({type: actionTypes.ADD_TASK, data}),
+        deleteSingleTask: (task_id) => dispatch({type: actionTypes.DELETE_SINGLE_TASK, task_id}),
+        editTask: (editedTask) => dispatch({type: actionTypes.EDIT_TASK, editedTask}),
+        toggleCheckedTask: (task_id) => dispatch({type: actionTypes.TOGGLE_CHECKED_TASK, task_id}),
+        removeSelectedTasks: (checkedTasks) => dispatch({type: actionTypes.REMOVE_SELECTED_TASKS, checkedTasks}),
+        toggleSelectTasks: (checkedTasks) => dispatch({type: actionTypes.TOGGLE_SELECT_TASKS, checkedTasks}),
+        toggleConfirmModal: () => dispatch({type: actionTypes.TOGGLE_CONFIRM_MODAL}),
+        toggleEditModal: (task) => dispatch({type: actionTypes.TOGGLE_EDIT_MODAL, task})
+
+    }
+}
+
+const TodoProvider = connect(mapStateToProps, mapDispatchToProps)(ToDo);
+
+export default TodoProvider;

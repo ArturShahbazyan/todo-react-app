@@ -87,7 +87,7 @@ class ActionsModal extends React.Component {
                     <div className="d-flex justify-content-center mb-3">
                         <Button variant="secondary"
                                 className="mr-3"
-                                onClick={onHide}
+                                onClick={() => onHide(null)}
                         >
                             Cancel
                         </Button>
@@ -104,11 +104,7 @@ class ActionsModal extends React.Component {
 }
 
 ActionsModal.propTypes = {
-    editableTask: PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired
-    }),
+    editableTask: PropTypes.object,
     onHide:PropTypes.func.isRequired,
     onSubmit:PropTypes.func.isRequired
 }

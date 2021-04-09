@@ -1,6 +1,7 @@
 import {Button} from "react-bootstrap";
 import {connect} from "react-redux";
 import React from "react";
+import actionTypes from "../../redux/actionTypes";
 
 const Counter = ({incrementCounter, decrementCounter, resetCounter, counter}) => {
 
@@ -44,9 +45,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        incrementCounter: () => dispatch({type: "incrementCounter"}),
-        decrementCounter: () => dispatch({type: "decrementCounter"}),
-        resetCounter: () => dispatch({type: "resetCounter"})
+        incrementCounter: () => dispatch({type: actionTypes.INCREMENT_COUNTER}),
+        decrementCounter: () => dispatch({type: actionTypes.DECREMENT_COUNTER}),
+        resetCounter: () => dispatch({type: actionTypes.RESET_COUNTER})
     }
 }
 

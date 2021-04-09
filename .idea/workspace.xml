@@ -2,64 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artur-react-app.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/ContactForm/ContactForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/ContactForm/ContactFormWithHooks.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/ContactForm/contactform.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Counter/Counter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Counter/counter.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/InputResult/InputResult.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/InputResult/inputresult.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Navbar/Navbar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Navbar/navbar.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Preloader/Preloader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Preloader/preloader.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Task/task.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/pages/About/About.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/pages/About/about.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/pages/Contact/Contact.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/pages/Contact/contact.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/pages/NotFound/NotFound.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/pages/NotFound/notfound.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTask.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTaskWithReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/pages/SingleTask/singletask.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/todo.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Context/ContactContextProvider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/404.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/beautyErrMsg.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/date.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/idGenerator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/validators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reportWebVitals.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/setupTests.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ContactForm/ContactFormWithHooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ContactForm/ContactFormWithHooks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Counter/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Counter/Counter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/InputResult/InputResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/InputResult/InputResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/Confirm/Confirm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Context/ContactContextProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Context/ContactContextProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +50,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Components/pages/SingleTask" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -217,7 +172,14 @@
       <workItem from="1616839253941" duration="21440000" />
       <workItem from="1617309846827" duration="4000" />
       <workItem from="1617352235261" duration="1914000" />
-      <workItem from="1617354186641" duration="5085000" />
+      <workItem from="1617354186641" duration="14977000" />
+      <workItem from="1617437986949" duration="24446000" />
+      <workItem from="1617524400367" duration="6287000" />
+      <workItem from="1617533389985" duration="14041000" />
+      <workItem from="1617899236782" duration="618000" />
+      <workItem from="1617900354586" duration="10768000" />
+      <workItem from="1617959372382" duration="697000" />
+      <workItem from="1617960085849" duration="12309000" />
     </task>
     <servers />
   </component>
