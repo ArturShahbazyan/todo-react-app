@@ -161,7 +161,7 @@ const mapStateToProps = (state) => {
         setChanges
     } = state.contactState;
 
-    const {isLoad} = state;
+    const {isLoad} = state.commonState;
 
     return {
         isLoad,

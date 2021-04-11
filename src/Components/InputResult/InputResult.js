@@ -30,7 +30,7 @@ const InputResult = ({setText, text, resetInput}) => {
 
 const mapStateToProps = (state) => {
     return {
-        text: state.text
+        text: state.counterState.text
     }
 }
 

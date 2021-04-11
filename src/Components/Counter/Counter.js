@@ -39,7 +39,7 @@ const Counter = ({incrementCounter, decrementCounter, resetCounter, counter}) =>
 
 const mapStateToProps = (state) => {
     return {
-        counter: state.counter
+        counter: state.counterState.counter
     }
 }
 

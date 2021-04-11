@@ -7,7 +7,7 @@ import About from "./Components/pages/About/About";
 import Contact from "./Components/pages/Contact/Contact";
 import NotFound from "./Components/pages/NotFound/NotFound";
 import ContactContextProvider from "./Context/ContactContextProvider";
-import SingleTaskWithReducer from "./Components/pages/SingleTask/SingleTaskWithReducer";
+import SingleTaskWithReducer from "./Components/pages/SingleTask/SingleTaskWithHooks";
 
 const pages = [
     {path: "/", Component: ToDo},
