@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_TASKS:
             return {
                 ...state,
-                tasks: action.data
+                tasks: action.data,
             }
 
         case actionTypes.TOGGLE_ADD_MODAL:
@@ -111,6 +111,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 editableTask: action.task
+            }
+        }
+
+        case actionTypes.TOGGLE_TASK_STATUS: {
+
+            let tasks = [...state.tasks];
+            const idx = tasks.findIndex((task ) => task._id === action.task._id);
+            tasks[idx] = action.task;
+            return {
+                ...state,
+                tasks
             }
         }
 

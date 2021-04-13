@@ -3,7 +3,7 @@ import {isRequired, maxLength, minLength, validEmail} from "../../helpers/valida
 
 const initialState = {
     success: false,
-    errorMessage: "",
+    error: "",
     formData: {
         name: {
             value: "",
@@ -34,10 +34,10 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 success: action.success
             }
-        case actionTypes.SET_ERROR_MESSAGE:
+        case actionTypes.SET_ERROR:
             return {
                 ...state,
-                errorMessage: action.errorMessage
+                error: action.error
             }
 
         case actionTypes.SET_CHANGES:

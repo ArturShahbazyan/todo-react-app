@@ -3,7 +3,7 @@ import logo from '../../logo.svg';
 import {memo} from "react";
 import {Card, Button, Form} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
+import {faTrash, faEdit, faCheckSquare, faHourglass} from '@fortawesome/free-solid-svg-icons';
 import dateFormatter from '../../helpers/date'
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
@@ -16,7 +16,8 @@ const Task = (props) => {
         disabled,
         handleDelete,
         toggleCheckedTask,
-        toggleEditModal
+        toggleEditModal,
+        toggleTaskStatus
     } = props;
 
 
@@ -31,7 +32,7 @@ const Task = (props) => {
             />
             <Card.Body className="d-flex flex-column">
                 <Card.Title>
-                    <Link className={s.singleTaskLink}  to={`/task/${task._id}`}>
+                    <Link className={s.singleTaskLink} to={`/task/${task._id}`}>
                         {task.title}
                     </Link>
 
@@ -55,6 +56,15 @@ const Task = (props) => {
                     >
                         <FontAwesomeIcon icon={faEdit}/>
                     </Button>
+                    <Button variant="outline-secondary"
+                            onClick={() => toggleTaskStatus(task)}
+                            disabled={disabled}
+                            className="ml-3"
+                    >
+                        <FontAwesomeIcon icon={
+                            task.status === "active" ? faHourglass : faCheckSquare
+                        }/>
+                    </Button>
                 </div>
             </Card.Body>
         </Card>
@@ -72,6 +82,7 @@ Task.propTypes = {
     handleDelete: PropTypes.func.isRequired,
     toggleCheckedTask: PropTypes.func.isRequired,
     toggleEditModal: PropTypes.func.isRequired,
+    toggleTaskStatus: PropTypes.func.isRequired
 }
 
 export default memo(Task);

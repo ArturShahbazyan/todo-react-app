@@ -2,24 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/contactReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/counterReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/singleTaskReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/todoReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Search/Search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Search/search.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ContactForm/ContactFormWithHooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ContactForm/ContactFormWithHooks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Counter/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Counter/Counter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/InputResult/InputResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/InputResult/InputResult.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTaskWithReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTaskWithReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/contactReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/contactReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/todoReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/todoReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,7 +187,14 @@
       <workItem from="1618041164507" duration="3685000" />
       <workItem from="1618048093909" duration="27518000" />
       <workItem from="1618123586025" duration="6877000" />
-      <workItem from="1618132359259" duration="9257000" />
+      <workItem from="1618132359259" duration="22479000" />
+      <workItem from="1618180466099" duration="587000" />
+      <workItem from="1618181070402" duration="70000" />
+      <workItem from="1618181154485" duration="103000" />
+      <workItem from="1618181275382" duration="113000" />
+      <workItem from="1618181410630" duration="355000" />
+      <workItem from="1618181791487" duration="331000" />
+      <workItem from="1618214683076" duration="15198000" />
     </task>
     <servers />
   </component>

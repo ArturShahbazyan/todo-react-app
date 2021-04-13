@@ -35,7 +35,7 @@ const ContactFormWithHooks = (props) => {
 
         const {
             formData,
-            setErrorMessage,
+            setError,
             setSuccess,
             setFormDataEmpty,
             loading
@@ -53,7 +53,7 @@ const ContactFormWithHooks = (props) => {
         const isTouched = name.touched || email.touched || message.touched;
 
         if (!isTouched) {
-            setErrorMessage("Fields is required");
+            setError("Fields is required");
             return;
         }
 
@@ -78,7 +78,7 @@ const ContactFormWithHooks = (props) => {
                 });
             })
             .catch(err => {
-                setErrorMessage(beautyErrMsg(err.message));
+                setError(beautyErrMsg(err.message));
                 setSuccess(false);
                 console.error("Contact Submit Request Error", err);
             })
@@ -87,7 +87,7 @@ const ContactFormWithHooks = (props) => {
     }
 
     const inputRef = useRef(null);
-    const {formData, isLoad, success, errorMessage, setChanges} = props;
+    const {formData, isLoad, success, error, setChanges} = props;
     useEffect(() => {
         inputRef.current.focus();
     }, []);
@@ -128,7 +128,7 @@ const ContactFormWithHooks = (props) => {
         <>
             <Form className={s.contact}>
                 <h5 className={`text-center ${success ? 'text-success' : 'text-danger'}`}>
-                    {success ? "Data send Successfully" : errorMessage}
+                    {success ? "Data send Successfully" : error}
                 </h5>
                 {inputs}
                 <Button
@@ -152,10 +152,10 @@ const mapStateToProps = (state) => {
     const {
         success,
         loading,
-        errorMessage,
+        error,
         formData,
         setSuccess,
-        setErrorMessage,
+        setError,
         setFormData,
         setFormDataEmpty,
         setChanges
@@ -167,10 +167,10 @@ const mapStateToProps = (state) => {
         isLoad,
         success,
         loading,
-        errorMessage,
+        error,
         formData,
         setSuccess,
-        setErrorMessage,
+        setError,
         setFormData,
         setFormDataEmpty,
         setChanges
@@ -182,7 +182,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         loading: (isLoad) => dispatch({type: actionTypes.LOADING, isLoad}),
         setSuccess: (success) => dispatch({type: actionTypes.SET_SUCCESS, success}),
-        setErrorMessage: (errorMessage) => dispatch({type: actionTypes.SET_ERROR_MESSAGE, errorMessage}),
+        setError: (error) => dispatch({type: actionTypes.SET_ERROR, error}),
         setChanges: (data) => dispatch({type: actionTypes.SET_CHANGES, data}),
         setFormDataEmpty: (emptyData) => dispatch({type: actionTypes.SET_FORM_DATA_EMPTY, emptyData}),
     }

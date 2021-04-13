@@ -1,71 +1,105 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import Task from '../../Task/Task';
 import {Row, Container, Col, Button} from 'react-bootstrap';
 import Confirm from '../../Modals/Confirm/Confirm';
 import ActionsModal from "../../Modals/ActionsModal/ActionsModal";
 import Preloader from "../../Preloader/Preloader";
+import Search from "../../Search/Search"
 import {connect} from "react-redux";
 import actionTypes from "../../../redux/actionTypes";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
     addTaskThunk,
     deleteSingleTaskThunk,
     editTaskThunk,
     removeSelectedTasksThunk,
-    setTasksThunk
+    setTasksThunk, toggleTaskStatusThunk
 } from "../../../redux/actions";
 
 
-class ToDo extends Component {
+const ToDo = (props) => {
 
-    componentDidMount() {
+    const {
+        tasks,
+        isLoad,
+        isAdd,
+        isConfirmModalOpen,
+        checkedTasks,
+        editableTask,
+        errorMessage,
+        successMessage,
+        toggleAddModal,
+        toggleCheckedTask,
+        toggleSelectTasks,
+        toggleConfirmModal,
+        toggleEditModal,
+        deleteSingleTask,
+        addTask,
+        editTask,
+        removeSelectedTasks,
+        setTasks,
+        toggleTaskStatus
+    } = props;
 
-        const {setTasks} = this.props;
+    useEffect(() => {
         setTasks();
-    }
-
-    render() {
-
-        const {
-            tasks,
-            isLoad,
-            isAdd,
-            isConfirmModalOpen,
-            checkedTasks,
-            editableTask,
-            toggleAddModal,
-            toggleCheckedTask,
-            toggleSelectTasks,
-            toggleConfirmModal,
-            toggleEditModal,
-            deleteSingleTask,
-            addTask,
-            editTask,
-            removeSelectedTasks
-        } = this.props;
+    }, [setTasks]);
 
 
-        const Tasks = tasks.map((task) => {
-            return (
-                <Col key={task._id}
-                     xs={12}
-                     md={6}
-                     xl={4}
-                     className="d-flex justify-content-center"
-                >
-                    <Task task={task}
-                          handleDelete={deleteSingleTask}
-                          toggleCheckedTask={toggleCheckedTask}
-                          disabled={!!checkedTasks.size}
-                          checked={checkedTasks.has(task._id)}
-                          toggleEditModal={toggleEditModal}
-                    />
-                </Col>
-            )
-        })
+    useEffect(() => {
+        errorMessage && toast.error(`🦄 ${errorMessage}` , {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }, [errorMessage]);
+
+    useEffect(() => {
+        successMessage && toast.success(`🦄 ${successMessage}` , {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }, [successMessage]);
+
+
+    const Tasks = tasks.map((task) => {
+        return (
+            <Col key={task._id}
+                 xs={12}
+                 md={6}
+                 xl={4}
+                 className="d-flex justify-content-center"
+            >
+                <Task task={task}
+                      handleDelete={deleteSingleTask}
+                      toggleCheckedTask={toggleCheckedTask}
+                      disabled={!!checkedTasks.size}
+                      checked={checkedTasks.has(task._id)}
+                      toggleEditModal={toggleEditModal}
+                      toggleTaskStatus={toggleTaskStatus}
+                />
+            </Col>
+        )
+    });
 
         return (
             <>
                 <Container>
+                    <Row>
+                        <Col>
+                            <Search />
+                        </Col>
+                    </Row>
                     <Row>
                         <Col md={12} className="d-flex justify-content-center">
                             <Button
@@ -120,9 +154,11 @@ class ToDo extends Component {
                 {
                     isLoad && <Preloader/>
                 }
+                {
+                    <ToastContainer />
+                }
             </>
         )
-    }
 }
 
 const mapStateToProps = (state) => {
@@ -135,7 +171,7 @@ const mapStateToProps = (state) => {
         editableTask
     } = state.todoState;
 
-    const {isLoad} = state.commonState;
+    const {isLoad, errorMessage, successMessage} = state.commonState;
 
 
     return {
@@ -144,7 +180,9 @@ const mapStateToProps = (state) => {
         isAdd,
         checkedTasks,
         isConfirmModalOpen,
-        editableTask
+        editableTask,
+        errorMessage,
+        successMessage
     }
 }
 
@@ -160,7 +198,8 @@ const mapDispatchToProps = (dispatch) => {
         removeSelectedTasks: (checkedTasks) => dispatch(removeSelectedTasksThunk(checkedTasks)),
         toggleSelectTasks: (checkedTasks) => dispatch({type: actionTypes.TOGGLE_SELECT_TASKS, checkedTasks}),
         toggleConfirmModal: () => dispatch({type: actionTypes.TOGGLE_CONFIRM_MODAL}),
-        toggleEditModal: (task) => dispatch({type: actionTypes.TOGGLE_EDIT_MODAL, task})
+        toggleEditModal: (task) => dispatch({type: actionTypes.TOGGLE_EDIT_MODAL, task}),
+        toggleTaskStatus: (task) => dispatch(toggleTaskStatusThunk(task)),
 
     }
 }

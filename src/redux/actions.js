@@ -11,7 +11,7 @@ export const setTasksThunk = (dispatch) => {
             if (data.error) throw data.error;
             dispatch({type: actionTypes.SET_TASKS, data});
         })
-        .catch(error => console.error(error))
+        .catch(err => dispatch({ type: actionTypes.SET_ERROR_MESSAGE, errorMessage: err.message }))
         .finally(() => {
             dispatch({type: actionTypes.LOADING, isLoad: false});
         });
@@ -34,10 +34,12 @@ export const addTaskThunk = (taskData) => (dispatch) => {
     })
         .then(resp => resp.json())
         .then(data => {
+            console.log(data);
             if (data.error) throw data.error;
             dispatch({type: actionTypes.ADD_TASK, data});
+            dispatch({type: actionTypes.SET_SUCCESS_MESSAGE, success:"Tasks was added successfully !"});
         })
-        .catch(err => console.error("Create Task Request Error::", err))
+        .catch(err => dispatch({ type: actionTypes.SET_ERROR_MESSAGE, errorMessage: err.message }))
         .finally(() => dispatch({type: actionTypes.LOADING, isLoad: false}));
 }
 
@@ -53,8 +55,9 @@ export const deleteSingleTaskThunk = (task_id) => (dispatch) => {
         .then(data => {
             if (data.error) throw data.error;
             dispatch({type: actionTypes.DELETE_SINGLE_TASK, task_id});
+            dispatch({type: actionTypes.SET_SUCCESS_MESSAGE, success:"Task was deleted successfully !"});
         })
-        .catch(err => console.error("Delete Task Request Error::", err))
+        .catch(err => dispatch({ type: actionTypes.SET_ERROR_MESSAGE, errorMessage: err.message }))
         .finally(() => dispatch({type: actionTypes.LOADING, isLoad: false}));
 
 }
@@ -74,9 +77,9 @@ export const editTaskThunk = (editedTask) => (dispatch) => {
         .then(data => {
             if (data.error) throw data.error;
             dispatch({type: actionTypes.EDIT_TASK, editedTask});
-            //editableTask && toggleEditModal(null);
+            dispatch({type: actionTypes.SET_SUCCESS_MESSAGE, success:"Task was edited successfully !"});
         })
-        .catch(err => console.error("Edit Task Request Error::", err))
+        .catch(err => dispatch({ type: actionTypes.SET_ERROR_MESSAGE, errorMessage: err.message }))
         .finally(() => dispatch({type: actionTypes.LOADING, isLoad: false}));
 
 }
@@ -96,9 +99,9 @@ export const removeSelectedTasksThunk = (checkedTasks) => (dispatch) => {
         .then(data => {
             if (data.error) throw data.error;
             dispatch({type: actionTypes.REMOVE_SELECTED_TASKS, checkedTasks});
-
+            dispatch({type: actionTypes.SET_SUCCESS_MESSAGE, success:"Tasks was deleted successfully !"});
         })
-        .catch(err => console.error("Delete Tasks Request Error::", err))
+        .catch(err => dispatch({ type: actionTypes.SET_ERROR_MESSAGE, errorMessage: err.message }))
         .finally(() => dispatch({type: actionTypes.LOADING, isLoad: false}));
 }
 
@@ -155,6 +158,31 @@ export const deleteTaskDetails = (singleTaskId, history) => (dispatch) => {
         }).catch(err => {
         console.error("Delete Single Task Request Error::", err)
     });
+
+}
+
+export const toggleTaskStatusThunk = (task) => (dispatch) => {
+
+    const status = task.status === "active" ? "done" : "active";
+    dispatch({type: actionTypes.LOADING, isLoad: true});
+    fetch(`http://localhost:3001/task/${task._id}`, {
+        method: "PUT",
+        body: JSON.stringify({ status }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) throw data.error;
+            dispatch({ type: actionTypes.TOGGLE_TASK_STATUS, task: data });
+        })
+        .catch(error => {
+            dispatch({ type: actionTypes.SET_ERROR_MESSAGE, errorMessage: error.message });
+        })
+        .finally(() => {
+            dispatch({type: actionTypes.LOADING, isLoad: false});
+        });
 
 }
 
