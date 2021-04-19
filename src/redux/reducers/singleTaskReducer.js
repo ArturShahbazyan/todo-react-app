@@ -13,7 +13,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isEditTask: !state.isEditTask
             }
-
         case actionTypes.SET_SINGLE_TASK:
             return {
                 ...state,

@@ -14,14 +14,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: action.data,
-            }
 
+            }
         case actionTypes.TOGGLE_ADD_MODAL:
             return {
                 ...state,
                 isAdd: !state.isAdd
             }
-
         case actionTypes.ADD_TASK:
             let tasks = [...state.tasks];
             tasks.push(action.data);
@@ -31,7 +30,6 @@ const reducer = (state = initialState, action) => {
                 tasks,
                 isAdd: false
             }
-
         case actionTypes.DELETE_SINGLE_TASK: {
             let tasks = [...state.tasks];
             tasks = tasks.filter((task) => action.task_id !== task._id);
@@ -41,11 +39,10 @@ const reducer = (state = initialState, action) => {
                 tasks
             }
         }
-
         case actionTypes.EDIT_TASK: {
             let tasks = [...state.tasks];
-            const idx = tasks.findIndex((task) => action.editedTask._id === task._id);
-            tasks[idx] = action.editedTask;
+            const idx = tasks.findIndex((task) => action.data._id === task._id);
+            tasks[idx] = action.data;
 
             return {
                 ...state,
@@ -53,9 +50,7 @@ const reducer = (state = initialState, action) => {
                 editableTask: null
             }
         }
-
         case actionTypes.TOGGLE_CHECKED_TASK: {
-
             const checkedTasks = new Set(state.checkedTasks);
 
             checkedTasks.has(action.task_id) ?
@@ -67,9 +62,7 @@ const reducer = (state = initialState, action) => {
                 checkedTasks
             }
         }
-
         case actionTypes.REMOVE_SELECTED_TASKS: {
-
             let tasks = [...state.tasks];
             tasks = tasks.filter((task) => !action.checkedTasks.has(task._id));
 
@@ -80,11 +73,8 @@ const reducer = (state = initialState, action) => {
                 isConfirmModalOpen: false
             }
         }
-
         case actionTypes.TOGGLE_SELECT_TASKS: {
-
             let {tasks, checkedTasks} = state;
-
             checkedTasks = new Set(checkedTasks);
 
             !checkedTasks.size ?
@@ -98,9 +88,7 @@ const reducer = (state = initialState, action) => {
                 checkedTasks
             }
         }
-
         case actionTypes.TOGGLE_CONFIRM_MODAL: {
-
             return {
                 ...state,
                 isConfirmModalOpen: !state.isConfirmModalOpen
@@ -115,16 +103,15 @@ const reducer = (state = initialState, action) => {
         }
 
         case actionTypes.TOGGLE_TASK_STATUS: {
-
             let tasks = [...state.tasks];
-            const idx = tasks.findIndex((task ) => task._id === action.task._id);
+            const idx = tasks.findIndex((task) => task._id === action.task._id);
             tasks[idx] = action.task;
+
             return {
                 ...state,
                 tasks
             }
         }
-
         default:
             return state;
     }

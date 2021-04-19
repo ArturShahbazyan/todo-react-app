@@ -2,22 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/Search/Search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Search/search.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Footer/Footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Footer/footer.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/actionsModal.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helpers/firstLatterUpperCase.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/actionsModalReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/searchReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ContactForm/ContactFormWithHooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ContactForm/ContactFormWithHooks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ContactForm/contactform.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ContactForm/contactform.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Counter/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Counter/Counter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Navbar/navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Navbar/navbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Search/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Search/search.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Search/search.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTaskWithHooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTaskWithHooks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/date.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/dateFormatter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/idGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/idGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/validators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/validators.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actionTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducer.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/contactReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/contactReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/counterReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/counterReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/singleTaskReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/singleTaskReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/todoReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/todoReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +88,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/redux/reducers" />
       <recent name="$PROJECT_DIR$/src/Components/pages/SingleTask" />
       <recent name="$PROJECT_DIR$/src/Components/ContactForm" />
       <recent name="$PROJECT_DIR$/src/Components" />
@@ -80,6 +100,19 @@
       <recent name="$PROJECT_DIR$/src/Components/Modals" />
       <recent name="$PROJECT_DIR$/src/Components/ToDo" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -195,6 +228,25 @@
       <workItem from="1618181410630" duration="355000" />
       <workItem from="1618181791487" duration="331000" />
       <workItem from="1618214683076" duration="15198000" />
+      <workItem from="1618308902130" duration="12083000" />
+      <workItem from="1618395237900" duration="4972000" />
+      <workItem from="1618404405873" duration="1468000" />
+      <workItem from="1618407388723" duration="514000" />
+      <workItem from="1618409068828" duration="7818000" />
+      <workItem from="1618481637329" duration="12606000" />
+      <workItem from="1618497250318" duration="7924000" />
+      <workItem from="1618506295948" duration="39403000" />
+      <workItem from="1618650524168" duration="18098000" />
+      <workItem from="1618676846242" duration="66000" />
+      <workItem from="1618676926537" duration="30000" />
+      <workItem from="1618677403352" duration="263000" />
+      <workItem from="1618677690818" duration="2213000" />
+      <workItem from="1618679980593" duration="30000" />
+      <workItem from="1618682873897" duration="5321000" />
+      <workItem from="1618688733161" duration="310000" />
+      <workItem from="1618689418420" duration="4543000" />
+      <workItem from="1618740848955" duration="25810000" />
+      <workItem from="1618820940531" duration="27922000" />
     </task>
     <servers />
   </component>
@@ -212,6 +264,16 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/redux/reducers/actionsModalReducer.js</url>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

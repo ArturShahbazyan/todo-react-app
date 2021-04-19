@@ -1,6 +1,6 @@
 import {Button, Card} from "react-bootstrap";
 import s from "./singletask.module.css"
-import dateFormatter from "../../../helpers/date";
+import dateFormatter from "../../../helpers/dateFormatter";
 import PropTypes from "prop-types";
 import ActionsModal from "../../Modals/ActionsModal/ActionsModal";
 import Preloader from "../../Preloader/Preloader";
@@ -8,7 +8,7 @@ import {useCallback, useEffect} from "react";
 import {connect} from "react-redux";
 import actionTypes from "../../../redux/actionTypes";
 import {
-    deleteTaskDetails,
+    deleteSingleTaskThunk,
     editSingleTaskThunk,
     setSingleTaskThunk
 } from "../../../redux/actions";
@@ -19,7 +19,6 @@ const SingleTaskWithHooks = (props) => {
     const {
         match,
         isEditTask,
-        isLoad,
         history,
         setSingleTask,
         singleTask,
@@ -28,21 +27,11 @@ const SingleTaskWithHooks = (props) => {
         deleteSingleTask
     } = props;
 
+    const {id} = match.params;
+
     useEffect(() => {
-        const {id} = match.params;
-
         setSingleTask(id, history);
-
-    }, [match.params, history, setSingleTask]);
-
-
-    const handleDeleteSingleTask = useCallback(() => {
-
-        const singleTaskId = singleTask._id;
-
-        deleteSingleTask(singleTaskId, history)
-
-    }, [singleTask, history, deleteSingleTask]);
+    }, [id, history, setSingleTask]);
 
 
     const handleReceivedEditTask = useCallback((editedTask) => {
@@ -82,7 +71,7 @@ const SingleTaskWithHooks = (props) => {
                         </Button>
                         <Button variant="outline-danger "
                                 className="mr-xl-3 mr-lg-3 mt-3 mt-lg-0"
-                                onClick={handleDeleteSingleTask}
+                                onClick={()=>deleteSingleTask(singleTask._id, history)}
                         >
                             Delete
                         </Button>
@@ -103,9 +92,6 @@ const SingleTaskWithHooks = (props) => {
                     onHide={() => toggleEditTask()}
                     onSubmit={handleReceivedEditTask}
                 />
-            }
-            {
-                isLoad && <Preloader/>
             }
 
         </>
@@ -129,7 +115,6 @@ const mapStateToProps = (state) => {
     return {
         singleTask: state.singleTaskState.singleTask,
         isEditTask: state.singleTaskState.isEditTask,
-        isLoad: state.commonState.isLoad
     }
 }
 
@@ -138,10 +123,9 @@ const mapDispatchToProps = (dispatch) => {
         toggleEditTask: () => dispatch({type: actionTypes.TOGGLE_EDIT_TASK}),
         setSingleTask: (id, history) => dispatch(setSingleTaskThunk(id, history)),
         editSingleTask: (editedTask) => dispatch(editSingleTaskThunk(editedTask)),
-        deleteSingleTask: (singleTaskId, history) => dispatch(deleteTaskDetails(singleTaskId, history))
+        deleteSingleTask: (singleTaskId, history) => dispatch(deleteSingleTaskThunk(singleTaskId, history))
     }
 }
-
 
 const SingleTaskWithHooksProvider = connect(mapStateToProps, mapDispatchToProps)(SingleTaskWithHooks);
 

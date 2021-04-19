@@ -3,18 +3,17 @@ import Task from '../../Task/Task';
 import {Row, Container, Col, Button} from 'react-bootstrap';
 import Confirm from '../../Modals/Confirm/Confirm';
 import ActionsModal from "../../Modals/ActionsModal/ActionsModal";
-import Preloader from "../../Preloader/Preloader";
 import Search from "../../Search/Search"
 import {connect} from "react-redux";
 import actionTypes from "../../../redux/actionTypes";
-import { ToastContainer, toast } from 'react-toastify';
+import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
     addTaskThunk,
     deleteSingleTaskThunk,
     editTaskThunk,
     removeSelectedTasksThunk,
-    setTasksThunk, toggleTaskStatusThunk
+    setTasksThunk, toggleEditModalThunk, toggleTaskStatusThunk
 } from "../../../redux/actions";
 
 
@@ -22,7 +21,6 @@ const ToDo = (props) => {
 
     const {
         tasks,
-        isLoad,
         isAdd,
         isConfirmModalOpen,
         checkedTasks,
@@ -42,13 +40,14 @@ const ToDo = (props) => {
         toggleTaskStatus
     } = props;
 
+
     useEffect(() => {
         setTasks();
     }, [setTasks]);
 
 
     useEffect(() => {
-        errorMessage && toast.error(`🦄 ${errorMessage}` , {
+        errorMessage && toast.error(`🦄 ${errorMessage}`, {
             position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -60,7 +59,7 @@ const ToDo = (props) => {
     }, [errorMessage]);
 
     useEffect(() => {
-        successMessage && toast.success(`🦄 ${successMessage}` , {
+        successMessage && toast.success(`🦄 ${successMessage}`, {
             position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -92,73 +91,68 @@ const ToDo = (props) => {
         )
     });
 
-        return (
-            <>
-                <Container>
-                    <Row>
-                        <Col>
-                            <Search />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={12} className="d-flex justify-content-center">
-                            <Button
-                                variant="secondary"
-                                onClick={toggleAddModal}
-                            >
-                                Add task
-                            </Button>
-                        </Col>
-                    </Row>
-                    <Row className="mt-3">
-                        {!tasks.length && <div>Tasks is Empty</div>}
-                        {Tasks}
-                    </Row>
-                    <Row className="mt-4">
-                        <Col className="d-flex justify-content-center">
-                            <Button
-                                variant="danger"
-                                onClick={toggleConfirmModal}
-                                disabled={!!!checkedTasks.size}
-                            >
-                                Remove Selected
-                            </Button>
-                            <Button
-                                variant="info"
-                                className="ml-3"
-                                onClick={toggleSelectTasks}
-                                disabled={!tasks.length}
-                            >
-                                {!checkedTasks.size ? "Select All" : "Unselect"}
-                            </Button>
-                        </Col>
-                    </Row>
-                </Container>
-                {
-                    isConfirmModalOpen && <Confirm
-                        onHide={toggleConfirmModal}
-                        tasksCount={`Do you want to delete ${checkedTasks.size} tasks?`}
-                        onDeleteTasks={() => removeSelectedTasks(checkedTasks)}
+    return (
+        <>
+            <Container>
+                <Row>
+                    <Col>
+                        <Search/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={12} className="d-flex justify-content-center">
+                        <Button
+                            variant="secondary"
+                            onClick={toggleAddModal}
+                        >
+                            Add task
+                        </Button>
+                    </Col>
+                </Row>
+                <Row className="mt-3">
+                    {!tasks.length && <div>Tasks is Empty</div>}
+                    {Tasks}
+                </Row>
+                <Row className="mt-4">
+                    <Col className="d-flex justify-content-center">
+                        <Button
+                            variant="danger"
+                            onClick={toggleConfirmModal}
+                            disabled={!!!checkedTasks.size}
+                        >
+                            Remove Selected
+                        </Button>
+                        <Button
+                            variant="info"
+                            className="ml-3"
+                            onClick={toggleSelectTasks}
+                            disabled={!tasks.length}
+                        >
+                            {!checkedTasks.size ? "Select All" : "Unselect"}
+                        </Button>
+                    </Col>
+                </Row>
+            </Container>
+            {
+                isConfirmModalOpen && <Confirm
+                    onHide={toggleConfirmModal}
+                    tasksCount={`Do you want to delete ${checkedTasks.size} tasks?`}
+                    onDeleteTasks={() => removeSelectedTasks(checkedTasks)}
 
-                    />
-                }
-
-                {
-                    (isAdd || editableTask) && <ActionsModal
-                        editableTask={editableTask}
-                        onHide={isAdd ? toggleAddModal : toggleEditModal}
-                        onSubmit={isAdd ? addTask : editTask}
-                    />
-                }
-
-                {
-                    isLoad && <Preloader/>
-                }
-                {
-                    <ToastContainer />
-                }
-            </>
-        )
+                />
+            }
+            {
+                (isAdd || editableTask) && <ActionsModal
+                    editableTask={editableTask}
+                    onHide={isAdd ? toggleAddModal : toggleEditModal}
+                    onSubmit={isAdd ? addTask : editTask}
+                />
+            }
+            {
+                (successMessage || errorMessage) && <ToastContainer/>
+            }
+        </>
+    )
 }
 
 const mapStateToProps = (state) => {
@@ -171,12 +165,11 @@ const mapStateToProps = (state) => {
         editableTask
     } = state.todoState;
 
-    const {isLoad, errorMessage, successMessage} = state.commonState;
+    const {errorMessage, successMessage} = state.globalState;
 
 
     return {
         tasks,
-        isLoad,
         isAdd,
         checkedTasks,
         isConfirmModalOpen,
@@ -198,9 +191,8 @@ const mapDispatchToProps = (dispatch) => {
         removeSelectedTasks: (checkedTasks) => dispatch(removeSelectedTasksThunk(checkedTasks)),
         toggleSelectTasks: (checkedTasks) => dispatch({type: actionTypes.TOGGLE_SELECT_TASKS, checkedTasks}),
         toggleConfirmModal: () => dispatch({type: actionTypes.TOGGLE_CONFIRM_MODAL}),
-        toggleEditModal: (task) => dispatch({type: actionTypes.TOGGLE_EDIT_MODAL, task}),
         toggleTaskStatus: (task) => dispatch(toggleTaskStatusThunk(task)),
-
+        toggleEditModal: (task) => dispatch(toggleEditModalThunk(task)),
     }
 }
 

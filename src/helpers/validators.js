@@ -27,5 +27,4 @@ export function isAllValid(formData) {
             return false;
     }
     return true;
-
 }*/

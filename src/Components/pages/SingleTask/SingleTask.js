@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Card} from "react-bootstrap";
 import s from "./singletask.module.css"
-import dateFormatter from "../../../helpers/date";
+import dateFormatter from "../../../helpers/dateFormatter";
 import PropTypes from "prop-types";
 import ActionsModal from "../../Modals/ActionsModal/ActionsModal";
 import Preloader from "../../Preloader/Preloader";
@@ -118,25 +118,25 @@ class SingleTask extends React.Component {
                             Created: {dateFormatter(singleTask.created_at)}
                         </Card.Text>
                         <div className="mt-5 d-flex flex-column flex-lg-row justify-content-center">
-                                <Button
-                                    variant="outline-secondary"
-                                    className="mr-xl-3 mr-lg-3"
-                                    onClick={this.handleGoBack}>
-                                    Go Back
-                                </Button>
-                                <Button variant="outline-danger "
-                                        className="mr-xl-3 mr-lg-3 mt-3 mt-lg-0"
-                                        onClick={this.handleDeleteSingleTask}
-                                >
-                                    Delete
-                                </Button>
-                                <Button
-                                    className="mt-3 mt-lg-0"
-                                    variant="outline-info"
-                                    onClick={this.handleToggleEditTask}
-                                >
-                                    Edit
-                                </Button>
+                            <Button
+                                variant="outline-secondary"
+                                className="mr-xl-3 mr-lg-3"
+                                onClick={this.handleGoBack}>
+                                Go Back
+                            </Button>
+                            <Button variant="outline-danger "
+                                    className="mr-xl-3 mr-lg-3 mt-3 mt-lg-0"
+                                    onClick={this.handleDeleteSingleTask}
+                            >
+                                Delete
+                            </Button>
+                            <Button
+                                className="mt-3 mt-lg-0"
+                                variant="outline-info"
+                                onClick={this.handleToggleEditTask}
+                            >
+                                Edit
+                            </Button>
                         </div>
                     </Card.Body>
                 </Card>
@@ -166,7 +166,6 @@ SingleTask.propTypes = {
         goBack: PropTypes.func.isRequired,
         push: PropTypes.func.isRequired,
     })
-
 }
 
 export default SingleTask;

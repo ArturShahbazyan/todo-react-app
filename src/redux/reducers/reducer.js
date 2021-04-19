@@ -2,8 +2,8 @@ import actionTypes from "../actionTypes";
 
 const initialState = {
     isLoad: false,
-    successMessage: "",
-    errorMessage:""
+    successMessage: false,
+    errorMessage:false
 }
 
 const reducer = (state = initialState, action) => {
@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_SUCCESS_MESSAGE: {
             return {
                 ...state,
-                successMessage: action.success
+                successMessage: action.successMessage
             }
         }
 
@@ -31,6 +31,7 @@ const reducer = (state = initialState, action) => {
                 errorMessage: action.isLoad ? "" : state.errorMessage,
                 successMessage: action.isLoad ? "" : state.successMessage
             }
+
 
         default:
             return state;

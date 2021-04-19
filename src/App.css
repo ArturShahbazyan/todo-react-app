@@ -7,10 +7,23 @@
 }
 
 .app-content-wrapper {
-  padding-top: 120px;
+  padding-top: 50px;
 }
 
-.App {
-  padding-bottom: 50px;
+.react_txt {
+  padding-top: 80px;
+  justify-content: center;
+  display: flex;
+  color:#00daff;
+  font-size: 25px;
+  white-space: pre;
+  font-weight: bold;
+  letter-spacing:1.5px;
+  word-break: break-all;
+}
+
+.banner {
+  height: 140px;
+  background-color: #282c34;
 }
 

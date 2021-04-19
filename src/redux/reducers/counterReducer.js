@@ -32,7 +32,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 text: ""
             }
-
         default:
             return state;
     }

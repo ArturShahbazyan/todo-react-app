@@ -1,10 +1,9 @@
 import React, {useEffect, useRef} from 'react'
 import {Button, Form} from "react-bootstrap";
 import s from "./contactform.module.css";
-import Preloader from "../Preloader/Preloader";
-import {beautyErrMsg} from "../../helpers/beautyErrMsg";
 import {connect} from "react-redux";
 import actionTypes from "../../redux/actionTypes";
+import {submitFormDataThunk} from "../../redux/actions";
 
 const inputList = [
     {
@@ -31,63 +30,16 @@ const inputList = [
 
 const ContactFormWithHooks = (props) => {
 
-    const handleSubmit = () => {
-
-        const {
-            formData,
-            setError,
-            setSuccess,
-            setFormDataEmpty,
-            loading
-        } = props;
-
-        const sendingFormData = {...formData};
-
-        for (let key in sendingFormData) {
-            if (sendingFormData.hasOwnProperty(key)) {
-                sendingFormData[key] = sendingFormData[key].value;
-            }
-        }
-
-        const {name, email, message} = formData;
-        const isTouched = name.touched || email.touched || message.touched;
-
-        if (!isTouched) {
-            setError("Fields is required");
-            return;
-        }
-
-        loading(true);
-
-        fetch('http://localhost:3001/form', {
-            method: "POST",
-            body: JSON.stringify(sendingFormData),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.error) throw data.error;
-                setSuccess(data.success);
-                setFormDataEmpty({
-                    ...formData,
-                    name: {value: ""},
-                    email: {value: ""},
-                    message: {value: ""}
-                });
-            })
-            .catch(err => {
-                setError(beautyErrMsg(err.message));
-                setSuccess(false);
-                console.error("Contact Submit Request Error", err);
-            })
-            .finally(() => loading(false));
-
-    }
-
     const inputRef = useRef(null);
-    const {formData, isLoad, success, error, setChanges} = props;
+    const {
+        formData,
+        success,
+        error,
+        setChanges,
+        submitFormData
+    } = props;
+
+
     useEffect(() => {
         inputRef.current.focus();
     }, []);
@@ -134,15 +86,12 @@ const ContactFormWithHooks = (props) => {
                 <Button
                     variant="info"
                     className={s.btn}
-                    onClick={handleSubmit}
+                    onClick={() => submitFormData(formData)}
                     disabled={!isValid}
                 >
                     Submit
                 </Button>
             </Form>
-            {
-                isLoad && <Preloader/>
-            }
         </>
     )
 }
@@ -150,24 +99,22 @@ const ContactFormWithHooks = (props) => {
 const mapStateToProps = (state) => {
 
     const {
-        success,
         loading,
-        error,
         formData,
         setSuccess,
         setError,
         setFormData,
         setFormDataEmpty,
-        setChanges
+        setChanges,
+        success,
+        error
     } = state.contactState;
 
-    const {isLoad} = state.commonState;
 
     return {
-        isLoad,
         success,
-        loading,
         error,
+        loading,
         formData,
         setSuccess,
         setError,
@@ -180,11 +127,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 
     return {
-        loading: (isLoad) => dispatch({type: actionTypes.LOADING, isLoad}),
-        setSuccess: (success) => dispatch({type: actionTypes.SET_SUCCESS, success}),
-        setError: (error) => dispatch({type: actionTypes.SET_ERROR, error}),
         setChanges: (data) => dispatch({type: actionTypes.SET_CHANGES, data}),
-        setFormDataEmpty: (emptyData) => dispatch({type: actionTypes.SET_FORM_DATA_EMPTY, emptyData}),
+        submitFormData: (formData) => dispatch(submitFormDataThunk(formData))
     }
 }
 

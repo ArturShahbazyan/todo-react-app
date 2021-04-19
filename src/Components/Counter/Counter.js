@@ -31,7 +31,6 @@ const Counter = ({incrementCounter, decrementCounter, resetCounter, counter}) =>
                 >
                     Reset
                 </Button>
-
             </div>
         </div>
     )

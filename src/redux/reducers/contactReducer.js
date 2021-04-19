@@ -2,7 +2,7 @@ import actionTypes from "../actionTypes";
 import {isRequired, maxLength, minLength, validEmail} from "../../helpers/validators";
 
 const initialState = {
-    success: false,
+    success: "",
     error: "",
     formData: {
         name: {
@@ -39,7 +39,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 error: action.error
             }
-
         case actionTypes.SET_CHANGES:
 
             const {name, value} = action.data.target;
@@ -75,14 +74,17 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 formData
             }
-
         case actionTypes.SET_FORM_DATA_EMPTY:
-
             return {
                 ...state,
                 formData: action.emptyData
             }
-
+        case actionTypes.SET_SUCCESS_OR_ERROR_EMPTY:
+            return {
+                ...state,
+                success: "",
+                error: ""
+            }
         default:
             return state;
     }

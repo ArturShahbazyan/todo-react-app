@@ -4,7 +4,7 @@ import {memo} from "react";
 import {Card, Button, Form} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash, faEdit, faCheckSquare, faHourglass} from '@fortawesome/free-solid-svg-icons';
-import dateFormatter from '../../helpers/date'
+import dateFormatter from '../../helpers/dateFormatter'
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 
@@ -41,7 +41,10 @@ const Task = (props) => {
                     {task.description}
                 </Card.Text>
                 <Card.Text className="mt-auto">
-                    Created: {dateFormatter(task.date)}
+                    Date : {dateFormatter(task.date)}
+                </Card.Text>
+                <Card.Text>
+                    Created_at : {dateFormatter(task.created_at)}
                 </Card.Text>
                 <div className="mt-2">
                     <Button variant="outline-danger"

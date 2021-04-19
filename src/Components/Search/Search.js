@@ -1,66 +1,170 @@
 import {DropdownButton, Dropdown, Form, Button} from 'react-bootstrap';
-import styles from './search.module.css';
+import s from './search.module.css';
 import DatePicker from 'react-datepicker';
+import {connect} from "react-redux";
+import actionTypes from "../../redux/actionTypes";
+import {firstLatterUpperCase} from "../../helpers/firstLatterUpperCase";
+import {searchTasksThunk} from "../../redux/actions";
+import dateFormatter from "../../helpers/dateFormatter";
 
-const Search = () => {
+const statusList = [
+    {label: "Done", value: "done", name: "status"},
+    {label: "Active", value: "active", name: "status"},
+    {label: "Reset", value: "", name: "status"}
+];
+
+const sortList = [
+    {label: "A-Z", value: "A-Z", name: "sort"},
+    {label: "Z-A", value: "Z-A", name: "sort"},
+    {label: "creation_date_oldest", value: "creation_date_oldest", name: "sort"},
+    {label: "creation_date_newest", value: "creation_date_newest", name: "sort"},
+    {label: "completion_date_oldest", value: "completion_date_oldest", name: "sort"},
+    {label: "completion_date_newest", value: "completion_date_newest", name: "sort"},
+    {label: "Reset", value: "", name: "sort"}
+];
+
+const dateList = [
+    {label: "Create_lte", value: "create_lte"},
+    {label: "Create_gte", value: "create_gte"},
+    {label: "Complete_lte", value: "complete_lte"},
+    {label: "Complete_lte", value: "complete_gte"},
+];
+
+const Search = (props) => {
+
+    const {
+        changeDropdown,
+        changeSearch,
+        changeDate,
+        searchTasks,
+        resetSearch,
+        ...state
+    } = props;
+
+    const {
+        search,
+        status,
+        sort,
+    } = state;
+
+    const handleSubmit = () => {
+        const queryData = {};
+        for (let key in state) {
+            if (state[key])
+                queryData[key] = typeof state[key] === "object" ? dateFormatter(state[key]) : state[key];
+        }
+        searchTasks(queryData);
+    }
+
     return (
-        <div className="mb-3">
-            <h1 className="text-center">Search</h1>
-            <div className={styles.searchSection}>
-                <div>
-                    <Form.Control
-                        name="title"
-                        type="text"
-                        placeholder="Search"
-                        style={{width: "60%", margin: "0 auto"}}
-                    />
-                </div>
-                <div className="d-flex my-5 row">
-                    <div className="d-flex col-xl-6 col-md-6 col-12 justify-content-md-start justify-content-center">
-                        <DropdownButton id="dropdown-basic-button" variant="secondary" title="Status">
-                            <Dropdown.Item>Done</Dropdown.Item>
-                            <Dropdown.Item>Active</Dropdown.Item>
-                        </DropdownButton>
+        <div className="mb-5">
+            <div className={s.search_wrapper}>
+                <div className={s.search_header}>Search</div>
+                <div className={s.searchSection}>
+                    <div>
+                        <Form.Control
+                            name="title"
+                            type="text"
+                            placeholder="Search"
+                            style={{width: "60%", margin: "0 auto"}}
+                            value={search}
+                            onChange={(e) => changeSearch(e.target.value)}
+                        />
+                    </div>
+                    <div className="d-flex my-5 row">
+                        <div
+                            className="d-flex col-xl-6 col-md-6 col-12 justify-content-md-start justify-content-center">
+                            <DropdownButton
+                                id="dropdown-basic-button"
+                                variant="secondary"
+                                title={!!!status ? "Status" : firstLatterUpperCase(status)}
+                            >
+                                {
+                                    statusList.map((status, index) => {
+                                        return <Dropdown.Item
+                                            key={index}
+                                            onClick={() => changeDropdown(status.value, status.name)}>
+                                            {status.label}
+                                        </Dropdown.Item>
+                                    })
 
-                        <DropdownButton id="dropdown-basic-button" title="Sort" variant="secondary" className="ml-3">
-                            <Dropdown.Item>A-Z</Dropdown.Item>
-                            <Dropdown.Item>Z-A</Dropdown.Item>
-                            <Dropdown.Item>creation_date_oldest</Dropdown.Item>
-                            <Dropdown.Item>creation_date_newest</Dropdown.Item>
-                            <Dropdown.Item>completion_date_oldest</Dropdown.Item>
-                            <Dropdown.Item>completion_date_newest</Dropdown.Item>
-                        </DropdownButton>
-                    </div>
-                    <div className="d-flex col-xl-6 col-md-6 col-12 mt-4 mt-sm-0">
-                        <div className="mr-3">
-                            <div className={styles.datePicker_label}>create_lte:</div>
-                            <div className={styles.datePicker_label}>create_gte:</div>
-                            <div className={styles.datePicker_label}>complete_lte:</div>
-                            <div className={styles.datePicker_label}>complete_gte:</div>
+                                }
+                            </DropdownButton>
+                            <DropdownButton id="dropdown-basic-button"
+                                            title={!!!sort ? "Sort" : sort.toUpperCase().replaceAll("_", " ")}
+                                            variant="secondary" className="ml-3">
+                                {
+                                    sortList.map((sort, index) => {
+                                        return <Dropdown.Item
+                                            key={index}
+                                            onClick={() => changeDropdown(sort.value, sort.name)}>
+                                            {sort.label}
+                                        </Dropdown.Item>
+                                    })
+                                }
+                            </DropdownButton>
                         </div>
-                        <div>
-                            <div className={styles.datePicker_row}>
-                                <DatePicker className={styles.datePicker} selected={new Date()}/>
-                            </div>
-                            <div className={styles.datePicker_row}>
-                                <DatePicker className={styles.datePicker} selected={new Date()}/>
-                            </div>
-                            <div className={styles.datePicker_row}>
-                                <DatePicker className={styles.datePicker} selected={new Date()}/>
-                            </div>
-                            <div className={styles.datePicker_row}>
-                                <DatePicker className={styles.datePicker} selected={new Date()}/>
-                            </div>
+                        <div className="d-flex flex-column col-xl-6 col-md-6 col-12 mt-4 mt-md-0">
+                            {
+                                dateList.map((item, index) => {
+                                    return <div className={`${s.datePicker_row} d-flex`} key={index}>
+                                        <div className={s.datePicker_label}>{item.label}</div>
+                                        <DatePicker
+                                            className={s.datePicker}
+                                            selected={props[item.value]}
+                                            onChange={date => {
+                                                changeDate(item.value, date)
+                                            }}
+                                        />
+                                    </div>
+                                })
+                            }
                         </div>
                     </div>
-                </div>
-                <div className="text-center">
-                    <Button variant="info mt-3">Search</Button>
+                    <div className="text-center">
+                        <Button variant="info mt-3" onClick={handleSubmit}>Search</Button>
+                        <Button variant="dark mt-3 ml-3" onClick={resetSearch}>Reset</Button>
+                    </div>
                 </div>
 
             </div>
+
         </div>
     );
 }
 
-export default Search;
+const mapStateToProps = (state) => {
+
+    const {
+        search,
+        status,
+        sort,
+        create_lte,
+        create_gte,
+        complete_lte,
+        complete_gte
+    } = state.searchState;
+
+    return {
+        search,
+        status,
+        sort,
+        create_lte,
+        create_gte,
+        complete_lte,
+        complete_gte
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+        changeDropdown: (value, dropDownType) => dispatch({type: actionTypes.SET_DROPDOWN, value, dropDownType}),
+        changeSearch: (value) => dispatch({type: actionTypes.SET_SEARCH, value}),
+        changeDate: (dataType, date) => dispatch({type: actionTypes.SET_DATE, dataType, date}),
+        searchTasks: (queryData) => dispatch(searchTasksThunk(queryData)),
+        resetSearch: () => dispatch({type: actionTypes.RESET_SEARCH}),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
