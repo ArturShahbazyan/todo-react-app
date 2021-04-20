@@ -27,10 +27,9 @@ const ActionsModal = (props) => {
 
         const newTaskData = {...taskData};
         newTaskData.date = dateFormatter(newTaskData.date);
-        const {title, description, date} = newTaskData;
 
-        editableTask ? onSubmit(newTaskData) : onSubmit({title, description, date});
-    }, [editableTask, taskData, onSubmit]);
+        onSubmit(newTaskData, "singleTask");
+    }, [taskData, onSubmit]);
 
 
     useEffect(() => {
@@ -109,7 +108,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         changeData: (e) => dispatch({type: actionTypes.CHANGE_DATA, e}),
         changeDate: (date) => dispatch({type: actionTypes.CHANGE_DATE, date}),
-        editData: (data) => dispatch({type: actionTypes.EDIT_DATA, data}),
         resetTaskModalFields: () => dispatch({type: actionTypes.RESET_TASK_MODAL_FIELDS}),
     }
 }

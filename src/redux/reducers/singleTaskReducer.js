@@ -11,12 +11,13 @@ const reducer = (state = initialState, action) => {
         case actionTypes.TOGGLE_EDIT_TASK:
             return {
                 ...state,
-                isEditTask: !state.isEditTask
+                isEditTask: !state.isEditTask,
             }
         case actionTypes.SET_SINGLE_TASK:
             return {
                 ...state,
-                singleTask: action.data
+                singleTask: action.data,
+                isEditTask: false
             }
         default:
             return state;

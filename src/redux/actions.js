@@ -43,7 +43,7 @@ export const addTaskThunk = (taskData) => (dispatch) => {
 }
 
 
-export const deleteSingleTaskThunk = (task_id, history=null) => (dispatch) => {
+export const deleteSingleTaskThunk = (task_id, history = null) => (dispatch) => {
 
     dispatch({type: actionTypes.LOADING, isLoad: true});
 
@@ -53,7 +53,7 @@ export const deleteSingleTaskThunk = (task_id, history=null) => (dispatch) => {
         .then(res => res.json())
         .then(data => {
             if (data.error) throw data.error;
-            if(history) history.push("/");
+            if (history) history.push("/");
             dispatch({type: actionTypes.DELETE_SINGLE_TASK, task_id});
             dispatch({type: actionTypes.SET_SUCCESS_MESSAGE, successMessage: "Task was deleted successfully !"});
         })
@@ -62,11 +62,11 @@ export const deleteSingleTaskThunk = (task_id, history=null) => (dispatch) => {
 
 }
 
-export const editTaskThunk = (editedTask) => (dispatch) => {
+export const editTaskThunk = (editedTask, page="todo") => (dispatch) => {
+
 
     editedTask.date = dateFormatter(editedTask.date);
     dispatch({type: actionTypes.LOADING, isLoad: true});
-
 
 
     fetch(`http://localhost:3001/task/${editedTask._id}`, {
@@ -79,8 +79,16 @@ export const editTaskThunk = (editedTask) => (dispatch) => {
         .then(res => res.json())
         .then(data => {
             if (data.error) throw data.error;
-            dispatch({type: actionTypes.EDIT_TASK, data});
-            dispatch({type: actionTypes.SET_SUCCESS_MESSAGE, successMessage: "Task was edited successfully !"});
+
+            if (page === "todo") {
+                dispatch({type: actionTypes.EDIT_TASK, data});
+                dispatch({type: actionTypes.SET_SUCCESS_MESSAGE, successMessage: "Task was edited successfully !"});
+            } else if (page === "singleTask") {
+                dispatch({type: actionTypes.SET_SINGLE_TASK, data});
+                dispatch({type: actionTypes.SET_SUCCESS_MESSAGE, successMessage: "Task was edited successfully !"});
+            } else {
+                throw new Error( `${page} Not Found` );
+            }
         })
         .catch(err => dispatch({type: actionTypes.SET_ERROR_MESSAGE, errorMessage: err.message}))
         .finally(() => dispatch({type: actionTypes.LOADING, isLoad: false}));
@@ -125,27 +133,6 @@ export const setSingleTaskThunk = (id, history) => (dispatch) => {
             dispatch({type: actionTypes.LOADING, isLoad: false});
             console.error("Single Task Response Error::", err);
         })
-}
-
-export const editSingleTaskThunk = (editedTask) => (dispatch) => {
-
-    dispatch({type: actionTypes.LOADING, isLoad: true});
-
-    fetch(`http://localhost:3001/task/${editedTask._id}`, {
-        method: "PUT",
-        body: JSON.stringify(editedTask),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-        .then(res => res.json())
-        .then(data => {
-            if (data.error) throw data.error;
-            dispatch({type: actionTypes.SET_SINGLE_TASK, data});
-            dispatch({type: actionTypes.TOGGLE_EDIT_TASK});
-        })
-        .catch(err => console.error("Single Task Response Error::", err))
-        .finally(() => dispatch({type: actionTypes.LOADING, isLoad: false}));
 }
 
 
@@ -249,9 +236,13 @@ export const submitFormDataThunk = (formData) => (dispatch) => {
         .finally(() => dispatch({type: actionTypes.LOADING, isLoad: false}));
 }
 
-export const toggleEditModalThunk = (task) => (dispatch) => {
-    dispatch({type: actionTypes.TOGGLE_EDIT_MODAL, task})
-    dispatch({type: actionTypes.SET_EDIT_TASK, task})
+export const toggleEditModalThunk = (task, page="todo") => (dispatch) => {
+    dispatch({type: actionTypes.SET_EDIT_TASK, task});
+    if(page==="todo"){
+        dispatch({type: actionTypes.TOGGLE_EDIT_MODAL, task});
+    } else if(page==="singleTask") {
+        dispatch({type: actionTypes.TOGGLE_EDIT_TASK});
+    }
 }
 
 

@@ -11,6 +11,9 @@ import {connect} from 'react-redux';
 import Preloader from "./Components/Preloader/Preloader";
 import ReactTypingEffect from 'react-typing-effect';
 import Footer from "./Components/Footer/Footer";
+import React, {useEffect} from "react";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const pages = [
     {path: "/", Component: ToDo},
@@ -20,7 +23,7 @@ const pages = [
     {path: "/404", Component: NotFound},
 ];
 
-const App = ({isLoad}) => {
+const App = ({isLoad, successMessage, errorMessage}) => {
 
     const pageRoutes = pages.map((page, index) => {
             const {ContextProvider, Component} = page;
@@ -41,6 +44,30 @@ const App = ({isLoad}) => {
             />
         }
     )
+
+    useEffect(() => {
+        errorMessage && toast.error(`🦄 ${errorMessage}`, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }, [errorMessage]);
+
+    useEffect(() => {
+        successMessage && toast.success(`🦄 ${successMessage}`, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }, [successMessage]);
 
     return (
         <div className="App">
@@ -67,16 +94,23 @@ const App = ({isLoad}) => {
             {
                 isLoad && <Preloader/>
             }
+            {
+                (successMessage || errorMessage) && <ToastContainer/>
+            }
         </div>
     );
 }
 
 const mapStateToProps = (state) => {
     const {
-        isLoad
+        isLoad,
+        successMessage,
+        errorMessage
     } = state.globalState;
     return {
-        isLoad
+        isLoad,
+        successMessage,
+        errorMessage
     }
 }
 

@@ -6,8 +6,7 @@ import ActionsModal from "../../Modals/ActionsModal/ActionsModal";
 import Search from "../../Search/Search"
 import {connect} from "react-redux";
 import actionTypes from "../../../redux/actionTypes";
-import {ToastContainer, toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import {
     addTaskThunk,
     deleteSingleTaskThunk,
@@ -44,31 +43,6 @@ const ToDo = (props) => {
     useEffect(() => {
         setTasks();
     }, [setTasks]);
-
-
-    useEffect(() => {
-        errorMessage && toast.error(`🦄 ${errorMessage}`, {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }, [errorMessage]);
-
-    useEffect(() => {
-        successMessage && toast.success(`🦄 ${successMessage}`, {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }, [successMessage]);
 
 
     const Tasks = tasks.map((task) => {
@@ -147,9 +121,6 @@ const ToDo = (props) => {
                     onHide={isAdd ? toggleAddModal : toggleEditModal}
                     onSubmit={isAdd ? addTask : editTask}
                 />
-            }
-            {
-                (successMessage || errorMessage) && <ToastContainer/>
             }
         </>
     )

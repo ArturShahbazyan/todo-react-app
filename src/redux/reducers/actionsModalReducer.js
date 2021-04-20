@@ -28,7 +28,6 @@ const reducer = (state = initialState, action) => {
             }
         case actionTypes.RESET_TASK_MODAL_FIELDS:
             return {
-                ...state,
                 title:"",
                 description:"",
                 date:new Date()

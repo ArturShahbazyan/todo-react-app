@@ -6,11 +6,10 @@ import ActionsModal from "../../Modals/ActionsModal/ActionsModal";
 import Preloader from "../../Preloader/Preloader";
 import {useCallback, useEffect} from "react";
 import {connect} from "react-redux";
-import actionTypes from "../../../redux/actionTypes";
 import {
     deleteSingleTaskThunk,
-    editSingleTaskThunk,
-    setSingleTaskThunk
+    editTaskThunk,
+    setSingleTaskThunk, toggleEditModalThunk
 } from "../../../redux/actions";
 
 
@@ -22,8 +21,8 @@ const SingleTaskWithHooks = (props) => {
         history,
         setSingleTask,
         singleTask,
-        toggleEditTask,
-        editSingleTask,
+        toggleEditModal,
+        editTask,
         deleteSingleTask
     } = props;
 
@@ -34,17 +33,13 @@ const SingleTaskWithHooks = (props) => {
     }, [id, history, setSingleTask]);
 
 
-    const handleReceivedEditTask = useCallback((editedTask) => {
-        editSingleTask(editedTask);
-    }, [editSingleTask]);
-
-
     const handleGoBack = useCallback(() => {
         history.goBack();
     }, [history]);
 
 
     if (!singleTask) return <Preloader/>;
+
 
     return (
         <>
@@ -78,7 +73,7 @@ const SingleTaskWithHooks = (props) => {
                         <Button
                             className="mt-3 mt-lg-0"
                             variant="outline-info"
-                            onClick={() => toggleEditTask()}
+                            onClick={() => toggleEditModal(singleTask, "singleTask")}
                         >
                             Edit
                         </Button>
@@ -89,8 +84,8 @@ const SingleTaskWithHooks = (props) => {
             {
                 isEditTask && <ActionsModal
                     editableTask={singleTask}
-                    onHide={() => toggleEditTask()}
-                    onSubmit={handleReceivedEditTask}
+                    onHide={() => toggleEditModal(singleTask, "singleTask")}
+                    onSubmit={editTask}
                 />
             }
 
@@ -120,9 +115,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        toggleEditTask: () => dispatch({type: actionTypes.TOGGLE_EDIT_TASK}),
+        toggleEditModal: (singleTask, page) => dispatch(toggleEditModalThunk(singleTask, page)),
         setSingleTask: (id, history) => dispatch(setSingleTaskThunk(id, history)),
-        editSingleTask: (editedTask) => dispatch(editSingleTaskThunk(editedTask)),
+        editTask: (singleTask,page) => dispatch(editTaskThunk(singleTask, page)),
         deleteSingleTask: (singleTaskId, history) => dispatch(deleteSingleTaskThunk(singleTaskId, history))
     }
 }
