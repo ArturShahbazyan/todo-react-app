@@ -4,14 +4,32 @@
     <list default="true" id="cb5277d6-749a-49ce-be20-c8b187d3bc8c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modals/ActionsModal/ActionsModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTaskWithHooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTaskWithHooks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ContactForm/ContactForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ContactForm/ContactForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ContactForm/ContactFormWithHooks.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Counter/Counter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Counter/counter.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Footer/Footer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Footer/footer.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/InputResult/InputResult.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/InputResult/inputresult.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/pages/About/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/About/About.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/pages/Contact/Contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/Contact/Contact.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/pages/SingleTask/SingleTaskWithHooks.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Context/ContactContextProvider.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/how-much-does-it-cost-to-develop-a-react-native-mobile-app-1e555f872d65.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/react.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/react_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/react___.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/react_redux.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/validators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/validators.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actionTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/actionsModalReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/actionsModalReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/singleTaskReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/singleTaskReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/counterReducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +92,19 @@
       <recent name="$PROJECT_DIR$/src/Components/Modals" />
       <recent name="$PROJECT_DIR$/src/Components/ToDo" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -208,7 +239,10 @@
       <workItem from="1618689418420" duration="4543000" />
       <workItem from="1618740848955" duration="25810000" />
       <workItem from="1618820940531" duration="28714000" />
-      <workItem from="1618912570540" duration="12332000" />
+      <workItem from="1618912570540" duration="15157000" />
+      <workItem from="1619019995667" duration="6883000" />
+      <workItem from="1619040167916" duration="598000" />
+      <workItem from="1619079584557" duration="937000" />
     </task>
     <servers />
   </component>

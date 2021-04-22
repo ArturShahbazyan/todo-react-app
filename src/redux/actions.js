@@ -1,5 +1,4 @@
 import actionTypes from "./actionTypes";
-import dateFormatter from "../helpers/dateFormatter";
 import {beautyErrMsg} from "../helpers/beautyErrMsg";
 
 export const setTasksThunk = (dispatch) => {
@@ -62,12 +61,9 @@ export const deleteSingleTaskThunk = (task_id, history = null) => (dispatch) => 
 
 }
 
-export const editTaskThunk = (editedTask, page="todo") => (dispatch) => {
+export const editTaskThunk = (editedTask, page = "todo") => (dispatch) => {
 
-
-    editedTask.date = dateFormatter(editedTask.date);
     dispatch({type: actionTypes.LOADING, isLoad: true});
-
 
     fetch(`http://localhost:3001/task/${editedTask._id}`, {
         method: "PUT",
@@ -87,12 +83,11 @@ export const editTaskThunk = (editedTask, page="todo") => (dispatch) => {
                 dispatch({type: actionTypes.SET_SINGLE_TASK, data});
                 dispatch({type: actionTypes.SET_SUCCESS_MESSAGE, successMessage: "Task was edited successfully !"});
             } else {
-                throw new Error( `${page} Not Found` );
+                throw new Error(`${page} Not Found`);
             }
         })
         .catch(err => dispatch({type: actionTypes.SET_ERROR_MESSAGE, errorMessage: err.message}))
         .finally(() => dispatch({type: actionTypes.LOADING, isLoad: false}));
-
 }
 
 export const removeSelectedTasksThunk = (checkedTasks) => (dispatch) => {
@@ -151,6 +146,7 @@ export const toggleTaskStatusThunk = (task) => (dispatch) => {
         .then(data => {
             if (data.error) throw data.error;
             dispatch({type: actionTypes.TOGGLE_TASK_STATUS, task: data});
+            dispatch({type: actionTypes.SET_SUCCESS_MESSAGE, successMessage: "Status was changed successfully !"});
         })
         .catch(error => {
             dispatch({type: actionTypes.SET_ERROR_MESSAGE, errorMessage: error.message});
@@ -236,11 +232,11 @@ export const submitFormDataThunk = (formData) => (dispatch) => {
         .finally(() => dispatch({type: actionTypes.LOADING, isLoad: false}));
 }
 
-export const toggleEditModalThunk = (task, page="todo") => (dispatch) => {
+export const toggleEditModalThunk = (task, page = "todo") => (dispatch) => {
     dispatch({type: actionTypes.SET_EDIT_TASK, task});
-    if(page==="todo"){
+    if (page === "todo") {
         dispatch({type: actionTypes.TOGGLE_EDIT_MODAL, task});
-    } else if(page==="singleTask") {
+    } else if (page === "singleTask") {
         dispatch({type: actionTypes.TOGGLE_EDIT_TASK});
     }
 }

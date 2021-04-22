@@ -1,12 +1,7 @@
-import Counter from "../../Counter/Counter";
-import InputResult from "../../InputResult/InputResult";
-
-
 const About = () => {
     return(
         <div className="text-center">
-            <Counter/>
-            <InputResult/>
+            <h2>About</h2>
         </div>
     )
 }

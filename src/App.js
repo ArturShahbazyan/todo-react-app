@@ -5,19 +5,17 @@ import ToDo from "./Components/pages/ToDo/ToDo";
 import About from "./Components/pages/About/About";
 import Contact from "./Components/pages/Contact/Contact";
 import NotFound from "./Components/pages/NotFound/NotFound";
-import ContactContextProvider from "./Context/ContactContextProvider";
-import SingleTaskWithReducer from "./Components/pages/SingleTask/SingleTaskWithHooks";
+import SingleTaskWithReducer from "./Components/pages/SingleTask/SingleTask";
 import {connect} from 'react-redux';
 import Preloader from "./Components/Preloader/Preloader";
 import ReactTypingEffect from 'react-typing-effect';
-import Footer from "./Components/Footer/Footer";
 import React, {useEffect} from "react";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const pages = [
     {path: "/", Component: ToDo},
-    {path: "/contact", Component: Contact, ContextProvider: ContactContextProvider},
+    {path: "/contact", Component: Contact},
     {path: "/about", Component: About},
     {path: "/task/:id", Component: SingleTaskWithReducer},
     {path: "/404", Component: NotFound},
@@ -26,18 +24,14 @@ const pages = [
 const App = ({isLoad, successMessage, errorMessage}) => {
 
     const pageRoutes = pages.map((page, index) => {
-            const {ContextProvider, Component} = page;
+            const {Component} = page;
             return <Route
                 path={page.path}
                 exact
                 key={index}
                 render={(props) => {
                     return (
-                        ContextProvider ?
-                            <ContextProvider>
-                                <Component {...props}/>
-                            </ContextProvider> :
-                            <Component {...props}/>
+                        <Component {...props}/>
                     )
                 }
                 }
@@ -90,7 +84,6 @@ const App = ({isLoad, successMessage, errorMessage}) => {
                 {pageRoutes}
                 <Redirect to="/404"/>
             </Switch>
-            <Footer/>
             {
                 isLoad && <Preloader/>
             }

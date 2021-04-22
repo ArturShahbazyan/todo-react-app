@@ -24,8 +24,6 @@ const ToDo = (props) => {
         isConfirmModalOpen,
         checkedTasks,
         editableTask,
-        errorMessage,
-        successMessage,
         toggleAddModal,
         toggleCheckedTask,
         toggleSelectTasks,

@@ -1,4 +1,4 @@
-import ContactFormWithHooks from "../../ContactForm/ContactFormWithHooks";
+import ContactFormWithHooks from "../../ContactForm/ContactForm";
 
 const Contact = () => {
     return (
