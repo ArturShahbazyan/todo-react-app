@@ -1,3 +1,4 @@
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Navbar from "./Components/Navbar/Navbar";
 import {Route, Switch, Redirect} from 'react-router-dom';
@@ -11,7 +12,6 @@ import Preloader from "./Components/Preloader/Preloader";
 import ReactTypingEffect from 'react-typing-effect';
 import React, {useEffect} from "react";
 import {ToastContainer, toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const pages = [
     {path: "/", Component: ToDo},

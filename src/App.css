@@ -31,3 +31,11 @@
   background-color: #282c34;
 }
 
+.Toastify__toast--success {
+  background: #29ccbe;
+}
+
+.Toastify__toast--error {
+  background: #dc3545;
+}
+
