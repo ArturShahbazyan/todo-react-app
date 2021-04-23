@@ -79,7 +79,7 @@ const ContactForm = (props) => {
     return (
         <>
             <Form className={s.contact}>
-                <h5 className={`text-center ${success ? 'text-success' : 'text-danger'}`}>
+                <h5 className={`text-center ${success ? 'text-info' : 'text-danger'}`}>
                     {success ? "Data send Successfully" : error}
                 </h5>
                 {inputs}

@@ -31,6 +31,11 @@
   background-color: #282c34;
 }
 
+.form-control:focus {
+  border: 1.5px solid #8c8f90;
+  box-shadow: 0 0 2px 1px #8c8f90;
+}
+
 .Toastify__toast--success {
   background: #29ccbe;
 }
