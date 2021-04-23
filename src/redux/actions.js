@@ -1,7 +1,6 @@
 import actionTypes from "./actionTypes";
 import {beautyErrMsg} from "../helpers/beautyErrMsg";
 const API_URL = process.env.REACT_APP_API_URL;
-console.log("Process", process);
 
 export const setTasksThunk = (dispatch) => {
 
