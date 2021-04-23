@@ -1,11 +1,13 @@
 import actionTypes from "./actionTypes";
 import {beautyErrMsg} from "../helpers/beautyErrMsg";
+const API_URL = process.env.REACT_APP_API_URL;
+console.log("Process", process);
 
 export const setTasksThunk = (dispatch) => {
 
     dispatch({type: actionTypes.LOADING, isLoad: true});
 
-    fetch("http://localhost:3001/task")
+    fetch(`${API_URL}/task`)
         .then(res => res.json())
         .then(data => {
             if (data.error) throw data.error;
@@ -23,7 +25,7 @@ export const addTaskThunk = (taskData) => (dispatch) => {
 
     dispatch({type: actionTypes.LOADING, isLoad: true});
 
-    fetch("http://localhost:3001/task", {
+    fetch(`${API_URL}/task`, {
         method: "POST",
         body: JSON.stringify(taskData),
         headers: {
@@ -46,7 +48,7 @@ export const deleteSingleTaskThunk = (task_id, history = null) => (dispatch) => 
 
     dispatch({type: actionTypes.LOADING, isLoad: true});
 
-    fetch(`http://localhost:3001/task/${task_id}`, {
+    fetch(`${API_URL}/task/${task_id}`, {
         method: "DELETE"
     })
         .then(res => res.json())
@@ -65,7 +67,7 @@ export const editTaskThunk = (editedTask, page = "todo") => (dispatch) => {
 
     dispatch({type: actionTypes.LOADING, isLoad: true});
 
-    fetch(`http://localhost:3001/task/${editedTask._id}`, {
+    fetch(`${API_URL}/task/${editedTask._id}`, {
         method: "PUT",
         body: JSON.stringify(editedTask),
         headers: {
@@ -94,7 +96,7 @@ export const removeSelectedTasksThunk = (checkedTasks) => (dispatch) => {
 
     dispatch({type: actionTypes.LOADING, isLoad: true});
 
-    fetch("http://localhost:3001/task", {
+    fetch(`${API_URL}/task`, {
         method: "PATCH",
         body: JSON.stringify({tasks: Array.from(checkedTasks)}),
         headers: {
@@ -115,7 +117,7 @@ export const setSingleTaskThunk = (id, history) => (dispatch) => {
 
     dispatch({type: actionTypes.LOADING, isLoad: true});
 
-    fetch(`http://localhost:3001/task/${id}`)
+    fetch(`${API_URL}/task/${id}`)
         .then(res => res.json())
         .then(data => {
 
@@ -135,7 +137,7 @@ export const toggleTaskStatusThunk = (task) => (dispatch) => {
 
     const status = task.status === "active" ? "done" : "active";
     dispatch({type: actionTypes.LOADING, isLoad: true});
-    fetch(`http://localhost:3001/task/${task._id}`, {
+    fetch(`${API_URL}/task/${task._id}`, {
         method: "PUT",
         body: JSON.stringify({status}),
         headers: {
@@ -167,7 +169,7 @@ export const searchTasksThunk = (queryData) => (dispatch) => {
     queryParam = queryParam.slice(0, queryParam.length - 1);
 
     dispatch({type: actionTypes.LOADING, isLoad: true});
-    fetch(`http://localhost:3001/task${queryParam}`)
+    fetch(`${API_URL}/task${queryParam}`)
         .then(res => res.json())
         .then(data => {
             if (data.error) throw data.error;
@@ -202,7 +204,7 @@ export const submitFormDataThunk = (formData) => (dispatch) => {
 
     dispatch({type: actionTypes.LOADING, isLoad: true});
 
-    fetch('http://localhost:3001/form', {
+    fetch(`${API_URL}/form`, {
         method: "POST",
         body: JSON.stringify(sendingFormData),
         headers: {
